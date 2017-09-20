@@ -20,9 +20,9 @@ class Arr {
 		return	\Krumo::dump($data);
     }
 
-    public static function paginator($data)
+    public static function paginator($data,$num = 10)
     {
-		return (new Paginator)->perPage(20)->make(Arr::reduce($data));
+		return (new Paginator)->perPage($num)->make(Arr::reduce($data));
     }
 
     public function infiniteScroll($data)

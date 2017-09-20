@@ -42,9 +42,9 @@ function View($data=Null)
 	\System\template\View::view($data);
 }
 
-function Paginator($data)
+function Paginator($data,$num=20)
 {
-    return \System\tools\render\Arr::paginator($data);
+    return \System\tools\render\Arr::paginator($data,$num);
 }
 
 function Repo($data=Null)

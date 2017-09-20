@@ -73,7 +73,7 @@ display: none;
         <?php endif ?>
         <br>
         <div class="col-lg-12">
-          <button type="submit" class="btn btn-lg btn-primary pull-right"><i class="fa fa-save fa-2x"></i> GUARDAR</button>
+          <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-save"></i> GUARDAR</button>
         </div>
       </div>
     </div>

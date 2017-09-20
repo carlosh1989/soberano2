@@ -55,7 +55,7 @@
         <div class="">
           <h5 class="text-muted text-primary">
           <i class="fa fa-file"></i> DOCUMENTOS CONSIGNADOS
-          <a class="btn btn-success pull-right" href="<?php echo baseUrl ?>admin/solicitudes/create/<?php echo $solicitante->id ?>"><i class="fa fa-plus"></i> Agregar Solicitud</a>
+          <a class="btn btn-default pull-right" href="<?php echo baseUrl ?>admin/solicitudes/create/<?php echo $solicitante->id ?>"><i class="fa fa-files-o text-primary"></i> Agregar Solicitud</a>
           </h5>
           <hr>
         </div>
@@ -71,10 +71,10 @@
           </thead>
           <tbody>
             <?php if ($solicitante->solicitudes): ?>
-            <?php foreach ($solicitante->solicitudes as $c): ?>
+            <?php foreach (Paginator($solicitante->solicitudes,4) as $c): ?>
             <tr>
               <td>
-                #<?php echo $c->cod ?>
+                <button class="btn btn-default">#<?php echo $c->cod ?></button>
               </td>
               <td class="text-uppercase">
               <?php  
@@ -110,8 +110,10 @@
             <?php endif ?>
           </tbody>
         </table>
+        <div class="text-center">
+          <?php echo Paginator($solicitante->solicitudes,4) ?>
         </div>
-        <br>
+        </div>
       </div>
     </div>
   </div>

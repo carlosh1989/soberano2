@@ -140,28 +140,44 @@ class Solicitudes
         $paso->eliminar = 0;
         $paso->save();
 
-        //TABLA DETALLES_SOLICITUD LOS DOCUMENTOS A CONSIGNAR
-        foreach ($requerimientos as $key => $r) 
+        if(isset($requerimientos))
         {
-            $detalle = new DetalleSolicitud;
-            $detalle->solicitud_id = $solicitud->id;
-            //$detalle->tipo_requerimiento_id = $tipo_requerimiento_id;
-            $detalle->requerimiento_categoria_id = $solicitud->requerimiento_categoria_id;
-            $detalle->requerimiento_id =$r;
-            $detalle->consignado = 1;
-            $detalle->eliminar = 0;
-            $detalle->save();
-        }
-        //echo $solicitante_id;
+            //TABLA DETALLES_SOLICITUD LOS DOCUMENTOS A CONSIGNAR
+            foreach ($requerimientos as $key => $r) 
+            {
+                $detalle = new DetalleSolicitud;
+                $detalle->solicitud_id = $solicitud->id;
+                //$detalle->tipo_requerimiento_id = $tipo_requerimiento_id;
+                $detalle->requerimiento_categoria_id = $solicitud->requerimiento_categoria_id;
+                $detalle->requerimiento_id =$r;
+                $detalle->consignado = 1;
+                $detalle->eliminar = 0;
+                $detalle->save();
+            }
 
-        if($solicitud->id and $detalle->id)
-        {
-            Success('solicitantes/'.$solicitante_id,'La solicitud fue realizada..!');
+            //echo $solicitante_id;
+            if($solicitud->id and $detalle->id)
+            {
+                Success('solicitantes/'.$solicitante_id,'La solicitud fue realizada..!');
+            }
+            else
+            {
+                Error('solicitantes/'.$solicitante_id,'Error al crear solicitud!');
+            }
         }
         else
         {
-            Error('solicitantes/'.$solicitante_id,'Error al crear solicitud!');
+            //echo $solicitante_id;
+            if($solicitud->id)
+            {
+                Success('solicitantes/'.$solicitante_id,'La solicitud fue realizada..!');
+            }
+            else
+            {
+                Error('solicitantes/'.$solicitante_id,'Error al crear solicitud!');
+            }
         }
+
     }
 
     public function show($id)

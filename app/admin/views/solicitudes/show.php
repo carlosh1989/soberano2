@@ -9,7 +9,7 @@ display: none;
 }
 .form-group input[type="checkbox"] + .btn-group > label span {
 width: 20px;
-height: 10px;
+height: 23px;
 }
 .form-group input[type="checkbox"] + .btn-group > label span:first-child {
 display: none;
@@ -38,10 +38,12 @@ display: none;
               <td width="40%" style="background: #E0E0E0;"><b><i class="fa fa-user"></i> Solicitante:</b></td>
               <td><?php echo ucwords($solicitud->solicitante->nombre_apellido) ?></td>
             </tr>
+            <?php if ($solicitud->requerimiento_categoria_id): ?>
             <tr class="text-uppercase">
               <td style="background: #E9E9E9;"><b><i class="fa fa-file"></i> Requerimiento:</b></td>
               <td><?php echo ucwords($solicitud->requerimiento_categoria->nombre) ?></td>
             </tr>
+            <?php endif ?>
             <tr class="text-uppercase">
               <td style="background: #E0E0E0;"><b><i class="fa fa-building-o"></i> Organismo Asignado:</b></td>
               <td><?php echo ucwords($solicitud->organismo->nombre) ?></td>

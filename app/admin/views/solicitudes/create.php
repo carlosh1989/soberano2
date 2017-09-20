@@ -57,7 +57,7 @@ var tipo_id = parts[1];
         </div>
       </div>
       <br>
-      <button type="submit" class="btn btn-lg btn-primary pull-right"><i class="fa fa-file fa-2x"></i> CONSIGNAR DOCUMENTOS</button>
+      <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-file"></i> CONSIGNAR DOCUMENTOS</button>
     </form>
   </div>
 </div>
