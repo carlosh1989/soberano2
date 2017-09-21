@@ -11,7 +11,7 @@ var parts = idAll.split(/\s*-\s*/);
 var organismo_id = parts[0]; 
 var tipo_id = parts[1];
 
-if (organismo_id==1) 
+if (tipo_id==1) 
 {
   //alert(organismo_id);
   $("#monto").prop('required',true);
