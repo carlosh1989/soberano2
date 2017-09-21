@@ -5,9 +5,25 @@ $("#TiposSelect option:selected").each(function () {
 //organismo_id = $(this).val();
 //id1 = $(this).val();
 var idAll = $(this).val();
+
+
 var parts = idAll.split(/\s*-\s*/);
 var organismo_id = parts[0]; 
-var tipo_id = parts[1]; 
+var tipo_id = parts[1];
+
+if (organismo_id==1) 
+{
+  //alert(organismo_id);
+  $("#monto").prop('required',true);
+  $("#monto").css("display", "block");
+
+} 
+else 
+{
+  $("#monto").prop('required',false);
+  $("#monto").css("display", "none");
+  //alert('otras');
+} 
 //alert(tipo_id);
   $.get("<?php echo baseUrl ?>admin/solicitudes/combo", { organismo_id:organismo_id }, function(data){
   $("#OrganismosSelect").html(data);
@@ -47,6 +63,11 @@ var tipo_id = parts[1];
           <div class="form-group">
               <select name="requerimiento_categoria_id" id="CategoriasSelect" class="form-control text-uppercase" required> 
               </select>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="form-group">
+            <input id="monto" style="display: none;" type="number" name="monto_solicitante" class="form-control text-uppercase" placeholder="Monto de Bolivares solicitados" required="">
           </div>
         </div>
         <div class="col-lg-12">

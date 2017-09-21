@@ -31,7 +31,6 @@ display: none;
       <input type="hidden" name="tipo_solicitud_id" value="<?php echo $tipo_solicitud_id ?>">
       <input type="hidden" name="requerimiento_categoria_id" value="<?php echo $requerimiento_categoria_id ?>">
       <input type="hidden" name="organismo_id" value="<?php echo $organismo_id ?>">
-
       <div class="row">
         <div class="col-lg-12">
           <?php if (isset($requerimientos[0])): ?>
@@ -39,10 +38,10 @@ display: none;
             <?php foreach ($requerimientos as $key => $r): ?>
             <?php if ($r->prioridad == true): ?>
             <?php $required = "required" ?>
-            <?php $requerido ="(Obligatorio)" ?>
+            <?php $requerido ="*" ?>
             <?php else: ?>
             <?php $required = "" ?>
-            <?php $requerido ="(Opcional)" ?>
+            <?php $requerido ="" ?>
             <?php endif ?>
             <div class="[ form-group ]">
               <input type="checkbox" name="requerimientos[]" id="fancy-checkbox-default-custom-icons-<?php echo $r->id ?>"  <?php echo $required ?> value="<?php echo $r->id ?>"/>
@@ -54,16 +53,18 @@ display: none;
                 <label for="fancy-checkbox-default-custom-icons-<?php echo $r->id ?>" class="[ btn btn-default active ]">
                   <?php echo $r->nombre ?>
                   <?php if ($requerido == "(Obligatorio)"): ?>
-                  <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                   <label class="text-danger"> <?php echo $requerido?></label>
                   <?php else: ?>
-                  <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                  <label class="text-primary"> <?php echo $requerido?></label>
+                  <?php echo $requerido?>
                   <?php endif ?>
                 </label>
               </div>
             </div>
             <?php endforeach ?>
+          </div>
+          <hr>
+          <div class="panel panel-default col-md-2">
+            <p>Necesarios (*)</p>
           </div>
         </div>
         <?php else: ?>
