@@ -16,12 +16,13 @@ if (tipo_id==1)
   //alert(organismo_id);
   $("#monto").prop('required',true);
   $("#monto").css("display", "block");
-
+  $("#monto").addClass( "animated bounceInUp" );
 } 
 else 
 {
   $("#monto").prop('required',false);
   $("#monto").css("display", "none");
+  $("#monto").removeClass( "animated bounceInUp" );
   //alert('otras');
 } 
 //alert(tipo_id);
@@ -67,7 +68,7 @@ else
         </div>
         <div class="col-lg-12">
           <div class="form-group">
-            <input id="monto" style="display: none;" type="number" name="monto_solicitante" class="form-control text-uppercase" placeholder="Monto de Bolivares solicitados" required="">
+            <input id="monto" style="display: none;" type="number" name="monto_solicitante" class="form-control" placeholder="Monto de Bolivares solicitados" required="">
           </div>
         </div>
         <div class="col-lg-12">
