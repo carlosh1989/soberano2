@@ -100,5 +100,3 @@ function variable_name( &$var, $scope=false, $prefix='UNIQUE', $suffix='VARIABLE
     $var = $old;
     return $vname;
 }
-
-new Eloquent();
