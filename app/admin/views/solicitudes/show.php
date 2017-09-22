@@ -17,12 +17,12 @@ display: none;
 .form-group input[type="checkbox"] + .btn-group > label span:last-child {
 display: inline-block;
 }
-.form-group input[type="checkbox"]:checked + .btn-group > label span:first-child {
+/*.form-group input[type="checkbox"]:checked + .btn-group > label span:first-child {
 display: inline-block;
 }
 .form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
 display: none;
-}
+}*/
 </style>
 <div id="panel" class="panel panel-primary">
   <div class="panel-heading">
@@ -52,6 +52,24 @@ display: none;
               <td style="background: #E9E9E9;"><b><i class="fa fa-calendar"></i> Fecha Registro:</b></td>
               <td><?php echo $fecha ?></td>
             </tr>
+            <?php if ($solicitud->observacion): ?>
+            <tr class="text-uppercase">
+              <td style="background: #E9E9E9;"><b><i class="fa fa-align-justify"></i> Obervación:</b></td>
+              <td><?php echo $solicitud->observacion ?></td>
+            </tr>
+            <?php endif ?>
+            <?php if ($solicitud->monto_solicitado): ?>
+            <tr class="text-uppercase">
+              <td style="background: #E9E9E9;"><b><i class="fa fa-get-pocket text-warning"></i> <i class="fa fa-money"></i> Monto solicitado:</b></td>
+              <td><?php echo $solicitud->monto_solicitado ?></td>
+            </tr>
+            <?php endif ?>
+            <?php if ($solicitud->monto_aprobado): ?>
+            <tr class="text-uppercase">
+              <td style="background: #E9E9E9;"><b><i class="fa fa-check-square text-success"></i> <i class="fa fa-money"></i> Monto Aprobado:</b></td>
+              <td><?php echo $solicitud->monto_solicitado ?></td>
+            </tr>
+            <?php endif ?>
             <tr class="text-uppercase">
               <td style="background: #E9E9E9;"><b><i class="fa fa-hand-paper-o"></i> Estatus:</b></td>
               <td>
@@ -141,10 +159,10 @@ display: none;
           <?php foreach ($solicitud->documentos_consignados as $key => $r): ?>
           <?php if ($r->requerimiento->prioridad == true): ?>
           <?php $required = "required" ?>
-          <?php $requerido ="(Obligatorio)" ?>
+          <?php $requerido ="*" ?>
           <?php else: ?>
           <?php $required = "" ?>
-          <?php $requerido ="(Opcional)" ?>
+          <?php $requerido ="" ?>
           <?php endif ?>
           <div class="[ form-group ]">
             <input type="checkbox" name="requerimientos[]" id="fancy-checkbox-default-custom-icons-<?php echo $r->id ?>"  <?php echo $required ?> value="<?php echo $r->id ?>"/>
@@ -156,10 +174,8 @@ display: none;
                 <?php echo $r->requerimiento->nombre ?>
                 <?php echo $r->nombre ?>
                 <?php if ($requerido == "(Obligatorio)"): ?>
-                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                 <label class="text-danger"> <?php echo $requerido?></label>
                 <?php else: ?>
-                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                 <label class="text-primary"> <?php echo $requerido?></label>
                 <?php endif ?>
               </label>

@@ -61,6 +61,7 @@ class Login
 
 	           	$session->register(1000); // Register for 2 hours.
 	            $session->set('current_user', $user);
+	            $_SESSION['nombre_usuario'] = $usuario->name;
 	            //header('location: '.baseUrl.'admin/pensionados');
 	            Redirect::to('auth/login/index');
 			}

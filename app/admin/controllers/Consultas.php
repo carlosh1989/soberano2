@@ -52,7 +52,8 @@ class Consultas extends Controller
 
         if(isset($tipo))
         {
-            $solicitudes = Solicitud::where('tipo_solicitud_id',$tipo)
+            $solicitudes = Solicitud::orderBy('id', 'DESC')
+            ->where('tipo_solicitud_id',$tipo)
             ->where('estatus',2)
             ->where('organismo_id',$organismo_id)
             ->get();
@@ -60,7 +61,8 @@ class Consultas extends Controller
         }
         else
         {
-            $solicitudes = Solicitud::where('organismo_id',$organismo_id)
+            $solicitudes = Solicitud::orderBy('id', 'DESC')
+            ->where('organismo_id',$organismo_id)
             ->where('estatus',2)
             ->get();
             $tipo_seleccion = "";

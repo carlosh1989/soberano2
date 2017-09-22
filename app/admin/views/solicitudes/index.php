@@ -1,3 +1,10 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+<style>
+.swal2-input
+{
+border-color: red;
+}
+</style>
 <div id="panel" class="panel panel-primary">
   <div class="panel-heading">
     <h3 class="panel-title text-muted"><i class="fa fa-clipboard fa-2x"></i> SOLICITUD</h3>
@@ -24,9 +31,9 @@
     <i class="fa fa-folder-open-o" aria-hidden="true"></i>
     SOLICITUDES ABIERTAS
     <?php if (isset($tipo_seleccion) and $tipo_seleccion): ?>
-      <a class="text-info"><?php echo $tipo_seleccion->nombre ?></a>
+    <a class="text-info"><?php echo $tipo_seleccion->nombre ?></a>
     <?php else: ?>
-      
+    
     <?php endif ?>
     </h5>
     <div class="row">
@@ -76,6 +83,23 @@
                 <a class="btn btn-default" href="<?php echo baseUrl ?>admin/solicitudes/<?php echo $c->id ?>"><i class="fa fa-search text-primary"></i></a>
               </td>
               <td>
+                <?php if ($c->tipo_solicitud->id == 1): ?>
+                <form action="<?php echo baseUrl ?>admin/solicitudes/monto" method="GET">
+                  <input cla type="hidden" name="solicitud_id" value="<?php echo $c->id ?>">
+                  <button onclick="" type="submit" class="btn btn-success change-icon">
+                  <i class="fa fa-unlock-alt"></i>
+                  <i class="fa fa-lock"></i>
+                  </button>                  <style>
+                  .change-icon > .fa + .fa,
+                  .change-icon:hover > .fa {
+                  display: none;
+                  }
+                  .change-icon:hover > .fa + .fa {
+                  display: inherit;
+                  }
+                  </style>
+                </form>
+                <?php else: ?>
                 <!--                 <form action="<?php echo baseUrl ?>admin/solicitudes/aprobar">
                   <?php echo Token::field() ?> -->
                   <input type="hidden" name="solicitud_id" value="<?php echo $c->id ?>">
@@ -150,6 +174,7 @@
                   })
                   }
                   </script>
+                  <?php endif ?>
                 </td>
               </tr>
               <?php endforeach ?>

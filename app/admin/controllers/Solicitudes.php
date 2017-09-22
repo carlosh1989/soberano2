@@ -27,15 +27,16 @@ class Solicitudes
 
         if(isset($tipo) and $tipo)
         {
-            $solicitudes = Solicitud::where('tipo_solicitud_id',$tipo)
-            ->where('estatus',1)
+            $solicitudes = Solicitud::orderBy('id', 'DESC')
             ->where('organismo_id',$organismo_id)
+            ->where('estatus',1)
             ->get();
             $tipo_seleccion = Tipo::find($tipo);
         }
         else
         {
-            $solicitudes = Solicitud::where('organismo_id',$organismo_id)
+            $solicitudes = Solicitud::orderBy('id', 'DESC')
+            ->where('organismo_id',$organismo_id)
             ->where('estatus',1)
             ->get();
             $tipo_seleccion = "";
@@ -61,6 +62,8 @@ class Solicitudes
         $data['solicitante_id'] = $solicitante_id;
         $data['tipo_solicitud_id'] = $tipo_solicitud_id;
         $data['requerimiento_categoria_id'] = $requerimiento_categoria_id;
+        $data['observacion_solicitud'] = $observacion_solicitud;
+        $data['monto_solicitado'] = $monto_solicitado;
         $data['requerimientos'] = Requerimientos::where('tipo_solicitud_id',$tipo_solicitud_id)->get();
         //Arr($requerimientos);
         View($data);
@@ -113,6 +116,31 @@ class Solicitudes
         echo json_encode($data);
     }
 
+    public function monto()
+    {
+        extract($_GET);
+        View(compact('solicitud_id'));
+        //Arr($_GET);
+    }
+
+    public function monto_aprobado()
+    {
+        extract($_POST);
+        $solicitud = Solicitud::find($solicitud_id);
+        $solicitud->estatus = 2;
+        $solicitud->fecha_hora_cerrado = Carbon::now();
+        $solicitud->monto_aprobado = $monto_aprobado;
+
+        if($solicitud->save())
+        {
+            Success('consultas/aprobadas/','La solicitud fue aprobada..!');
+        }
+        else
+        {
+            Error('consultas/aprobadas/','Error al aprobar solicitud!');
+        }
+    }
+
     public function store()
     {
         //Arr($_POST);
@@ -125,6 +153,8 @@ class Solicitudes
         $solicitud->solicitante_id = $solicitante_id;
         $solicitud->tipo_solicitud_id = $tipo_solicitud_id;
         $solicitud->fecha_hora_registrado = Carbon::now();
+        $solicitud->monto_solicitado = $monto_solicitado;
+        $solicitud->observacion = $observacion_solicitud;
         $solicitud->fecha_hora_asignado_consignado = Carbon::now();
         $solicitud->estatus = 1;
         $solicitud->save();

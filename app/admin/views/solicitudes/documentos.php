@@ -30,6 +30,8 @@ display: none;
       <input type="hidden"  name="solicitante_id" value="<?php echo $solicitante_id ?>">
       <input type="hidden" name="tipo_solicitud_id" value="<?php echo $tipo_solicitud_id ?>">
       <input type="hidden" name="requerimiento_categoria_id" value="<?php echo $requerimiento_categoria_id ?>">
+      <input type="hidden" name="observacion_solicitud" value="<?php echo $observacion_solicitud ?>">
+      <input type="hidden" name="monto_solicitado" value="<?php echo $monto_solicitado ?>">
       <input type="hidden" name="organismo_id" value="<?php echo $organismo_id ?>">
       <div class="row">
         <div class="col-lg-12">
