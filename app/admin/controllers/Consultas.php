@@ -80,15 +80,16 @@ class Consultas extends Controller
 
         if(isset($tipo))
         {
-            $solicitudes = Solicitud::where('tipo_solicitud_id',$tipo)
-            ->where('estatus',3)
+            $solicitudes = Solicitud::orderBy('id', 'DESC')
+            ->where('tipo_solicitud_id',$tipo)
             ->where('organismo_id',$organismo_id)
             ->get();
         }
         else
         {
-            $solicitudes = Solicitud::where('organismo_id',$organismo_id)
-            ->where('estatus',3)
+            $solicitudes = Solicitud::orderBy('id', 'DESC')
+            ->where('organismo_id',$organismo_id)
+            ->where('estatus',2)
             ->get();
         }
         

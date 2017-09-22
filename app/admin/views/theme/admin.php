@@ -82,13 +82,13 @@ Usuario
                     </li>
                   </ul>
                   <ul class="nav navbar-nav">
-                    <li class="active"><a href="<?php echo baseUrl ?>"><i class="fa fa-home"></i> INICIO</a></li>
+                    <li class="active"><a href="<?php echo baseUrl ?>"><i class="fa fa-home"></i> INGRESAR SOLICITUD</a></li>
                     <li><a href="<?php echo baseUrl ?>admin/solicitantes"><i class="fa fa-user"></i> SOLICITANTES</a></li>
-                    <li><a href="<?php echo baseUrl ?>admin/solicitudes"><i class="fa fa-clipboard"></i> SOLICITUDES</a></li>
                   </ul>
                   <ul class="nav navbar-nav navbar-right">
-                      <li><a href="#" id="" data-toggle="collapse" data-target="#consultasMenu" aria-expanded="false"><i class="fa fa-search"></i> CONSULTAS</a>
+                      <li><a href="#" id="" data-toggle="collapse" data-target="#consultasMenu" aria-expanded="false"><i class="fa fa-clipboard"></i> SOLICITUDES</a>
                       <ul class="nav collapse" id="consultasMenu" role="menu" aria-labelledby="btn-1">
+                      <li><a href="<?php echo baseUrl ?>admin/solicitudes"><i class="fa fa-unlock"></i> ABIERTAS</a></li>
                         <li><a href="<?php echo baseUrl ?>admin/consultas/cerradas"><i class="fa fa-lock"></i> CERRADAS</a></li>
                         <li><a href="<?php echo baseUrl ?>admin/consultas/aprobadas"><i class="fa fa-check-square"></i> APROBADAS</a></li>
                         <li><a href="<?php echo baseUrl ?>admin/consultas/rechazadas"><i class="fa fa-window-close"></i> RECHAZADAS</a></li>

@@ -67,7 +67,7 @@ display: none;
             <?php if ($solicitud->monto_aprobado): ?>
             <tr class="text-uppercase">
               <td style="background: #E9E9E9;"><b><i class="fa fa-check-square text-success"></i> <i class="fa fa-money"></i> Monto Aprobado:</b></td>
-              <td><?php echo $solicitud->monto_solicitado ?></td>
+              <td><?php echo $solicitud->monto_aprobado ?></td>
             </tr>
             <?php endif ?>
             <tr class="text-uppercase">

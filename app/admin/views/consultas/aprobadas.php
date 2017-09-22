@@ -16,6 +16,9 @@
               <?php endforeach ?>
             </select>
           </div>
+          <div class="col-md-6">
+            <a class="btn btn-primary pull-right" href="<?php echo baseUrl ?>reportes/aprobadas"><i class="fa fa-file-pdf-o"></i> Generar PDF</a>
+          </div>
         </form>
       </div>
     </div>

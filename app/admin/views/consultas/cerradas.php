@@ -44,7 +44,7 @@
             </tr>
           </thead>
           <tbody>
-            <?php foreach (Paginator($solicitudes) as $c): ?>
+            <?php foreach (Paginator($solicitudes,7) as $c): ?>
             <?php
             $fecha = $c->fecha_hora_asignado_consignado;
             list($date,$hora) = explode(' ', $fecha);
@@ -72,7 +72,7 @@
             </tbody>
           </table>
           <div class="text-center">
-            <?php echo Paginator($solicitudes); ?>
+            <?php echo Paginator($solicitudes,7); ?>
           </div>
         </div>
       </div>
