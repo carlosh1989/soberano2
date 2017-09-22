@@ -22,11 +22,10 @@
     <br>
     <h5 class="text-muted text-primary text-center text-uppercase">
     <i class="fa fa-folder-open-o" aria-hidden="true"></i>
-    SOLICITUDES CERRADAS
     <?php if (isset($tipo_seleccion) and $tipo_seleccion): ?>
-      <a class="text-info"><?php echo $tipo_seleccion->nombre ?></a>
+    <a class="text-primary"><?php echo $tipo_seleccion->nombre ?> CERRADAS</a>
     <?php else: ?>
-      
+     SOLICITUDES CERRADAS
     <?php endif ?>
     </h5>
     <div class="row">

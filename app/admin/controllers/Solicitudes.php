@@ -10,6 +10,7 @@ use App\Solicitante;
 use App\Solicitud;
 use App\Tipo;
 use Carbon\Carbon;
+use System\tools\rounting\Redirect;
 use System\tools\session\Session;
 
 class Solicitudes
@@ -22,8 +23,8 @@ class Solicitudes
     public function index()
     {
         extract($_GET);
-        $usuario = (object) Session::get('current_user');
-        $organismo_id = $usuario->organismo_id; 
+        $usuario = Session::get('current_user');
+        $organismo_id = $usuario['organismo_id']; 
 
         if(isset($tipo) and $tipo)
         {

@@ -41,7 +41,7 @@ class Consultas extends Controller
         }
         
         $tipos = Tipo::all();
-        View(compact('solicitudes','tipos'));
+        View(compact('solicitudes','tipos','tipo_seleccion'));
     }
 
     public function aprobadas()

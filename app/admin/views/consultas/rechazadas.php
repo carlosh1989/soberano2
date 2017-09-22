@@ -22,11 +22,10 @@
     <br>
     <h5 class="text-muted text-primary text-center text-uppercase">
     <i class="fa fa-times" aria-hidden="true"></i>
-    SOLICITUDES RECHAZADAS
     <?php if (isset($tipo_seleccion) and $tipo_seleccion): ?>
-      <a class="text-info"><?php echo $tipo_seleccion->nombre ?></a>
+    <a class="text-primary"><?php echo $tipo_seleccion->nombre ?> RECHAZADAS</a>
     <?php else: ?>
-      
+     SOLICITUDES RECHAZADAS
     <?php endif ?>
     </h5>
     <div class="row">
@@ -44,7 +43,7 @@
             </tr>
           </thead>
           <tbody>
-            <?php foreach (Paginator($solicitudes) as $c): ?>
+            <?php foreach (Paginator($solicitudes,7) as $c): ?>
             <?php
             $fecha = $c->fecha_hora_asignado_consignado;
             list($date,$hora) = explode(' ', $fecha);
@@ -72,7 +71,7 @@
             </tbody>
           </table>
           <div class="text-center">
-            <?php echo Paginator($solicitudes); ?>
+            <?php echo Paginator($solicitudes,7); ?>
           </div>
         </div>
       </div>

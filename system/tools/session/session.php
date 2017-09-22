@@ -63,7 +63,15 @@ class Session
      */
     public function get($key)
     {
-        return $_SESSION[$key];
+        if (array_key_exists('current_user', $_SESSION)) 
+        {
+            return $_SESSION[$key];
+        }
+        else
+        {
+            return false;
+        }
+        //return $_SESSION[$key];
     }
 
     /**

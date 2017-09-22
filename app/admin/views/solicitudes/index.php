@@ -29,11 +29,10 @@ border-color: red;
     <br>
     <h5 class="text-muted text-primary text-center text-uppercase">
     <i class="fa fa-folder-open-o" aria-hidden="true"></i>
-    SOLICITUDES ABIERTAS
     <?php if (isset($tipo_seleccion) and $tipo_seleccion): ?>
-    <a class="text-info"><?php echo $tipo_seleccion->nombre ?></a>
+    <a class="text-primary"><?php echo $tipo_seleccion->nombre ?></a>
     <?php else: ?>
-    
+     SOLICITUDES
     <?php endif ?>
     </h5>
     <div class="row">

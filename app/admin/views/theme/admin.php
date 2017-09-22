@@ -74,7 +74,10 @@
                 <div id="navbar" class="navbar-collapse collapse">
                   <ul class="nav navbar-nav navbar-right">
                       <li><a class="text-uppercase" href="#" id="" data-toggle="collapse" data-target="#opcionesMenu" aria-expanded="false"><i class="fa fa-user-circle"></i> 
-Usuario
+                      <?php  
+                      $usuario = Session::get('current_user');
+                      echo $usuario['name'];
+                      ?>
                       </a>
                       <ul class="nav collapse" id="opcionesMenu" role="menu" aria-labelledby="btn-1">
                         <li><a href="<?php echo baseUrl ?>auth/login/logout"><i class="fa fa-power-off"></i> Salir</a></li>

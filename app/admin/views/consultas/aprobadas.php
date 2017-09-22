@@ -25,11 +25,10 @@
     <br>
     <h5 class="text-muted text-primary text-center text-uppercase">
     <i class="fa fa-check" aria-hidden="true"></i>
-    SOLICITUDES APROBADAS
     <?php if (isset($tipo_seleccion) and $tipo_seleccion): ?>
-      <a class="text-info"><?php echo $tipo_seleccion->nombre ?></a>
+    <a class="text-primary"><?php echo $tipo_seleccion->nombre ?> APROBADAS</a>
     <?php else: ?>
-      
+     SOLICITUDES APROBADAS
     <?php endif ?>
     </h5>
     <div class="row">
@@ -47,7 +46,7 @@
             </tr>
           </thead>
           <tbody>
-            <?php foreach (Paginator($solicitudes) as $c): ?>
+            <?php foreach (Paginator($solicitudes,7) as $c): ?>
             <?php
             $fecha = $c->fecha_hora_asignado_consignado;
             list($date,$hora) = explode(' ', $fecha);
@@ -70,14 +69,14 @@
               <td class="text-uppercase">
                 <a class="btn btn-default" href="<?php echo baseUrl ?>admin/solicitudes/<?php echo $c->id ?>"><i class="fa fa-search text-primary"></i></a>
               </td>
-              </tr>
-              <?php endforeach ?>
-            </tbody>
-          </table>
-          <div class="text-center">
-            <?php echo Paginator($solicitudes); ?>
-          </div>
+            </tr>
+            <?php endforeach ?>
+          </tbody>
+        </table>
+        <div class="text-center">
+          <?php echo Paginator($solicitudes,7); ?>
         </div>
       </div>
     </div>
   </div>
+</div>
