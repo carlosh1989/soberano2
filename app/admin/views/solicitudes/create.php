@@ -17,13 +17,13 @@ if (tipo_id==1)
 //alert(organismo_id);
 $("#monto").prop('required',true);
 $("#monto").css("display", "block");
-$("#monto").addClass( "animated bounceInUp" );
+$("#monto").addClass( "animated fadeIn" );
 }
 else
 {
 $("#monto").prop('required',false);
 $("#monto").css("display", "none");
-$("#monto").removeClass( "animated bounceInUp" );
+$("#monto").removeClass( "animated fadeIn" );
 //alert('otras');
 }
 //alert(tipo_id);
@@ -79,12 +79,8 @@ $("#CategoriasSelect").html(data);
           </div>
         </div>
       </div>
-      <div class="col-lg-12">
-        <div class="form-group">
-          <textarea name="observacion_solicitud" class="editor">
-          </textarea>
-        </div>
-      </div>
+      <textarea name="observacion_solicitud" class="editor">
+      </textarea>
       <br>
       <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-file"></i> CONSIGNAR DOCUMENTOS</button>
     </form>

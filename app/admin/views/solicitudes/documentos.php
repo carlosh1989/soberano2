@@ -4,7 +4,7 @@ display: none;
 }
 .form-group input[type="checkbox"] + .btn-group > label span {
 width: 20px;
-height: 22px;
+height: 14px;
 }
 .form-group input[type="checkbox"] + .btn-group > label span:first-child {
 display: none;

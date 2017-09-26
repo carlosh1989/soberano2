@@ -1,4 +1,4 @@
 
 s/${modulo}/admin/
-s/${model}/Consultas/
+s/${model}/Estadisticas/
 s/${tabla}/index/

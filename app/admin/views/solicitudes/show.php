@@ -75,65 +75,8 @@ display: none;
               <td>
                 <?php if ($solicitud->estatus == 1): ?>
                 <button onclick="cerrar()" type="submit" class="btn btn-primary">
-                  <i class="fa fa-gear"></i> PROCESANDO
+                  <i class="fa fa-search"></i> En estudio
                   </button>
-                  <!-- </form> -->
-                  <script>
-                  function cerrar(argument) {
-                  swal({
-                  title: 'Estatus?',
-                  text: "La solicitud fue aprobada o rechazada?",
-                  type: 'warning',
-                  showCancelButton: true,
-                  confirmButtonColor: '#3085d6',
-                  cancelButtonColor: '#d33',
-                  confirmButtonText: 'Aprobada!',
-                  cancelButtonText: 'Cancelada!',
-                  confirmButtonClass: 'btn btn-success',
-                  cancelButtonClass: 'btn btn-danger',
-                  buttonsStyling: 'padding-left:5px;'
-                  }).then(function () {
-                  var solicitudID = <?php echo $solicitud->id ?>;
-                  var estatus = 2;
-                  $.get("<?php echo baseUrl ?>admin/solicitudes/estatus", { solicitud_id:solicitudID, estatus:estatus}, function(data){
-                  //alert(JSON.stringify(data));
-                  });
-                  location.reload();
-                  }, function (dismiss) {
-                  // dismiss can be 'cancel', 'overlay',
-                  // 'close', and 'timer'
-                  if (dismiss === 'cancel') {
-                  swal({
-                  title: 'Observación',
-                  input: 'text',
-                  showCancelButton: true,
-                  confirmButtonText: 'Finalizar',
-                  showLoaderOnConfirm: true,
-                  preConfirm: function (email) {
-                  return new Promise(function (resolve, reject) {
-                  setTimeout(function() {
-                  if (email === 'asd') {
-                  reject('This email is already taken.')
-                  } else {
-                  resolve()
-                  }
-                  }, 2000)
-                  })
-                  },
-                  allowOutsideClick: false
-                  }).then(function (email) {
-                  var solicitudID = <?php echo $solicitud->id ?>;
-                  var estatus = 3;
-                  var observacion = email;
-                  $.get("<?php echo baseUrl ?>admin/solicitudes/estatus", { solicitud_id:solicitudID, estatus:estatus, observacion:observacion }, function(data){
-                  //alert(JSON.stringify(data));
-                  });
-                  location.reload();
-                  })
-                  }
-                  })
-                  }
-                  </script>
                 <?php endif ?>
                 <?php if ($solicitud->estatus == 2): ?>
                 <a class="btn btn-success" href="#"><i class="fa fa-check-square"></i> APROBADO</a>
