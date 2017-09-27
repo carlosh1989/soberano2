@@ -36,13 +36,14 @@
         <table class="table table-striped table-condensed animated fadeIn" data-striped="true">
           <thead>
             <tr class="bg-primary text-white">
-              <th width="5%" class="text-uppercase">COD</th>
+              <th width="5%" class="text-uppercase">Solicitud</th>
               <th width="5%" class="text-uppercase">Fecha</th>
               <th width="10%" class="text-uppercase">Cédula</th>
               <th width="22%" class="text-uppercase">Solicitante</th>
               <th class="text-uppercase">Telefono n°1</th>
               <th class="text-uppercase">Telefono n°2</th>
               <th width="1%" class="text-uppercase">Ver</th>
+              <th width="1%" class="text-uppercase">Entregar</th>
             </tr>
           </thead>
           <tbody>
@@ -68,6 +69,23 @@
               <td class="text-uppercase"><?php echo $c->solicitante->telefono2 ?></td>
               <td class="text-uppercase">
                 <a class="btn btn-default" href="<?php echo baseUrl ?>admin/solicitudes/<?php echo $c->id ?>"><i class="fa fa-search text-primary"></i></a>
+              </td>
+              <td>
+                <form action="<?php echo baseUrl ?>admin/solicitudes/entregar" method="GET">
+                <input cla type="hidden" name="solicitud_id" value="<?php echo $c->id ?>">
+                <button onclick="" type="submit" class="btn btn-success change-icon">
+                <i class="fa fa-share-square"></i>
+                <i class="fa fa-share-square-o"></i>
+                </button>                  <style>
+                .change-icon > .fa + .fa,
+                .change-icon:hover > .fa {
+                display: none;
+                }
+                .change-icon:hover > .fa + .fa {
+                display: inherit;
+                }
+                </style>
+                </form>
               </td>
             </tr>
             <?php endforeach ?>

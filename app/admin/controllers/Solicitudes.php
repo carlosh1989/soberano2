@@ -142,6 +142,13 @@ class Solicitudes
         }
     }
 
+    public function entregar()
+    {
+        extract($_GET);
+        $fecha_hora_entrega
+        View(compact(''));
+    }
+
     public function store()
     {
         //Arr($_POST);

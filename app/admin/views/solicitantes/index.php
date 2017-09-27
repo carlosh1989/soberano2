@@ -1,6 +1,6 @@
 <div id="panel" class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title text-muted "><i class="fa fa-user-plus fa-2x"></i> SOLICITANTE</h3>
+    <h3 class="panel-title text-muted "><i class="fa fa-folder fa-2x"></i> INGRESAR SOLICITUD</h3>
   </div>
   <div class="panel-body">
     <div class="row">

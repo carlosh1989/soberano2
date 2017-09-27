@@ -33,7 +33,7 @@
         <table class="table table-striped table-condensed animated fadeIn" data-striped="true">
           <thead>
             <tr class="bg-primary text-white">
-              <th width="5%" class="text-uppercase">COD</th>
+              <th width="5%" class="text-uppercase">Solicitud</th>
               <th width="5%" class="text-uppercase">Fecha</th>
               <th width="10%" class="text-uppercase">Cédula</th>
               <th width="22%" class="text-uppercase">Solicitante</th>
