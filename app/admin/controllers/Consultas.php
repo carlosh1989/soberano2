@@ -99,6 +99,32 @@ class Consultas extends Controller
         View(compact('solicitudes','tipos','tipo_seleccion'));
     }
 
+    public function entregadas()
+    {
+        extract($_GET);
+        $usuario = (object) Session::get('current_user');
+        $organismo_id = $usuario->organismo_id; 
+
+        if(isset($tipo))
+        {
+            $solicitudes = Solicitud::orderBy('id', 'DESC')
+            ->where('tipo_solicitud_id',$tipo)
+            ->where('organismo_id',$organismo_id)
+            ->where('estatus',4)
+            ->get();
+        }
+        else
+        {
+            $solicitudes = Solicitud::orderBy('id', 'DESC')
+            ->where('organismo_id',$organismo_id)
+            ->where('estatus',4)
+            ->get();
+        }
+        
+        $tipos = Tipo::all();
+        View(compact('solicitudes','tipos','tipo_seleccion'));
+    }
+
     public function solicitante()
     {
         extract($_GET);

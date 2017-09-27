@@ -84,6 +84,9 @@ display: none;
                 <?php if ($solicitud->estatus == 3): ?>
                 <a class="btn btn-danger" href="#"><i class="fa fa-window-close"></i> RECHAZADO</a>
                 <?php endif ?>
+                <?php if ($solicitud->estatus == 4): ?>
+                <a class="btn btn-success" href="#"><i class="fa fa-share-square"></i> ENTREGADAS</a>
+                <?php endif ?>
               </td>
             </tr>
           </tbody>
@@ -135,16 +138,7 @@ display: none;
       <br>
     </div>
     <?php endif ?>
-    <?php if ($solicitud->estatus == 2): ?>
-    <div class="col-lg-6 animated fadeIn panel panel-default animated">
-      <div class="">
-        <h5 class="text-muted text-primary">
-        <i class="fa fa-send"></i> INFORMACIÓN DE ENTREGA
-        </h5>
-      </div>
-      <hr>
-    </div>
-    <?php endif ?>
+
     <?php if ($solicitud->estatus == 3): ?>
     <div class="col-lg-6 animated fadeIn panel panel-default animated">
       <div class="">
@@ -157,6 +151,16 @@ display: none;
         <?php echo $solicitud->observacion ?>
       </div>
       <br>
+    </div>
+    <?php endif ?>
+    <?php if ($solicitud->estatus == 4): ?>
+    <div class="col-lg-6 animated fadeIn panel panel-default animated">
+      <div class="">
+        <h5 class="text-muted text-primary">
+        <i class="fa fa-send"></i> INFORMACIÓN DE ENTREGA
+        </h5>
+      </div>
+      <hr>
     </div>
     <?php endif ?>
   </div>

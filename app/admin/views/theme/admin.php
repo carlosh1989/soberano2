@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="<?php echo baseUrl ?>assets/bower/animate.css/animate.min.css">
     <script src="<?php echo baseUrl ?>assets/bower/sweetalert2/dist/sweetalert2.min.js"></script>
     <link rel="stylesheet" href="<?php echo baseUrl ?>assets/bower/bootstrap-table/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="<?php echo baseUrl ?>assets/bower/pickadate/lib/themes/default.css">
+    <link rel="stylesheet" href="<?php echo baseUrl ?>assets/bower/pickadate/lib/themes/default.date.css">
+    <link rel="stylesheet" href="<?php echo baseUrl ?>assets/bower/pickadate/lib/themes/default.time.css">
     <script src="<?php echo baseUrl ?>assets/bower/bootstrap-table/dist/bootstrap-table.min.js"></script>
     <script src="<?php echo baseUrl ?>assets/bower/jquery/dist/jquery.min.js"></script>
     <script src="<?php echo baseUrl ?>assets/bower/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -22,6 +25,11 @@
     <script src="<?php echo baseUrl ?>assets/bower/inputmask/dist/inputmask/phone-codes/phone-be.js"></script>
     <script src="<?php echo baseUrl ?>assets/bower/inputmask/dist/inputmask/phone-codes/phone-ru.js"></script>
     <script src="<?php echo baseUrl ?>assets/bower/inputmask/dist/inputmask/bindings/inputmask.binding.js"></script>
+    <script src="<?php echo baseUrl ?>assets/bower/inputmask/dist/inputmask/bindings/inputmask.binding.js"></script>
+    <script src="<?php echo baseUrl ?>assets/bower/pickadate/lib/picker.js"></script>
+    <script src="<?php echo baseUrl ?>assets/bower/pickadate/lib/picker.time.js"></script>
+    <script src="<?php echo baseUrl ?>assets/bower/pickadate/lib/picker.date.js"></script>
+    <script src="<?php echo baseUrl ?>assets/bower/pickadate/lib/translations/es_ES.js"></script>
     <style>
     body{
     background-color: #222;
@@ -102,6 +110,7 @@
                         <li><a href="<?php echo baseUrl ?>admin/consultas/cerradas"><i class="fa fa-lock"></i> CERRADAS</a></li>
                         <li><a href="<?php echo baseUrl ?>admin/consultas/aprobadas"><i class="fa fa-check-square"></i> APROBADAS</a></li>
                         <li><a href="<?php echo baseUrl ?>admin/consultas/rechazadas"><i class="fa fa-window-close"></i> RECHAZADAS</a></li>
+                        <li><a href="<?php echo baseUrl ?>admin/consultas/entregadas"><i class="fa fa-window-close"></i> ENTREGADAS</a></li>
                       </ul>
                     </li>
                   </ul>

@@ -23,6 +23,7 @@
         "lightbox2": "*",
         "jquery-mask-plugin": "*",
         "jquery-maskmoney": "*",
-        "trumbowyg": "*"
+        "trumbowyg": "*",
+        "pickadate": "*"
     }
 }

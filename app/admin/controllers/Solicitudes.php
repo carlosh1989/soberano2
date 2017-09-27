@@ -3,6 +3,7 @@ namespace App\admin\controllers;
 
 use App\Categoria;
 use App\DetalleSolicitud;
+use App\Entrega;
 use App\Organismo;
 use App\Paso;
 use App\Requerimientos;
@@ -145,8 +146,32 @@ class Solicitudes
     public function entregar()
     {
         extract($_GET);
-        $fecha_hora_entrega
-        View(compact(''));
+        $solicitud = Solicitud::find($solicitud_id);
+        View(compact('solicitud_id','solicitud'));
+    }
+
+    public function entregar_proceso()
+    {
+        extract($_POST);
+        //Arr($_POST);
+        $entrega = new Entrega;
+        $entrega->responsable = $responsable;
+        $entrega->lugar = $lugar;
+        $entrega->fecha_entrega = $fecha_entrega;
+        $entrega->obervacion = $observacion; 
+
+        $solicitud = Solicitud::find($solicitud_id);
+        $solicitud->estatus = 4;
+        $solicitud->fecha_hora_entregado = Carbon::now();
+
+        if($entrega->save() and $solicitud->save())
+        {
+            Success('solicitudes/'.$solicitud->id,'Solicitud fue entregada.');
+        }
+        else
+        {
+            Error('consultas/aprobadas','Error.');
+        }
     }
 
     public function store()
