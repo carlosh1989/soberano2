@@ -170,10 +170,10 @@ class Solicitudes
         {
             $imagen = new EntregaImagen;
             $imagen->solicitudes_entregas_id = $entrega->id;
-            $imagen->imagen_original = 'https://process.filestackapi.com/AhTgLagciQByzXpFGRI0Az/resize=w:1000/quality=value:70/compress/'.$imagen;
-            $imagen->imagen_grande = 'https://process.filestackapi.com/AhTgLagciQByzXpFGRI0Az/resize=w:800/quality=value:70/compress/'.$imagen;
-            $imagen->imagen_medio = 'https://process.filestackapi.com/AhTgLagciQByzXpFGRI0Az/resize=w:400/quality=value:70/compress/'.$imagen;
-            $imagen->imagen_miniatura = 'https://process.filestackapi.com/AhTgLagciQByzXpFGRI0Az/resize=w:250/quality=value:70/compress/'.$imagen;
+            $imagen->imagen_original = 'https://process.filestackapi.com/AhTgLagciQByzXpFGRI0Az/resize=w:1000/quality=value:70/compress/'.$imagenEntrega;
+            $imagen->imagen_grande = 'https://process.filestackapi.com/AhTgLagciQByzXpFGRI0Az/resize=w:800/quality=value:70/compress/'.$imagenEntrega;
+            $imagen->imagen_medio = 'https://process.filestackapi.com/AhTgLagciQByzXpFGRI0Az/resize=w:400/quality=value:70/compress/'.$imagenEntrega;
+            $imagen->imagen_miniatura = 'https://process.filestackapi.com/AhTgLagciQByzXpFGRI0Az/resize=w:250/quality=value:70/compress/'.$imagenEntrega;
             //return $laboratorio->id;
 
             if($imagen->save())
