@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="<?php echo baseUrl ?>assets/bower/lightbox2/dist/css/lightbox.min.css">
 <?php
 list($fecha,$hora) = explode(' ', $solicitud->fecha_hora_registrado);
 list($ano,$mes,$dia) = explode('-', $fecha);
@@ -164,7 +165,7 @@ display: none;
         <i class="fa fa-send"></i> INFORMACIÓN DE ENTREGA
         </h5>
       </div>
-      <div class="panel-body text-uppercase">
+      <div class="panel-body">
         <b>ENTREGADO POR:</b> <?php echo $solicitud->datos_entrega->responsable ?>
         <br>
         <b>lugar:</b> <?php echo $solicitud->datos_entrega->lugar ?>
@@ -172,9 +173,18 @@ display: none;
         <b>fecha:</b> <?php echo $solicitud->datos_entrega->fecha_entrega ?>
         <br>
         <b>Observación:</b> <?php echo $solicitud->datos_entrega->observacion ?>
+        <div class="col-lg-12 animated fadeIn">
+        <?php echo $solicitud->datos_entrega->imagen->imagen_original ?>
+        <?php if ($solicitud->datos_entrega->imagen): ?>
+        <a class="example-image-link" href="<?php echo $solicitud->datos_entrega->imagen->imagen_grande ?>" data-lightbox="example-set"><img class="example-image img-responsive" src="<?php echo $solicitud->datos_entrega->imagen->imagen_medio ?>" alt=""/></a>
+        <?php else: ?>
+        <h4>No hay imagenes</h4>
+        <?php endif ?>
+      </div>
       </div>
       <br>
     </div>
     <?php endif ?>
   </div>
 </div>
+<script src="<?php echo baseUrl ?>assets/bower/lightbox2/dist/js/lightbox-plus-jquery.min.js"></script>
