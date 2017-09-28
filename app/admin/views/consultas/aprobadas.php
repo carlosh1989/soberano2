@@ -54,7 +54,7 @@
             list($ano,$mes,$dia)= explode('-', $date);
             ?>
             <tr id="tr<?php echo $c->id ?>">
-              <td class="text-uppercase"><button class="btn btn-default">#<?php echo $c->id ?><?php echo $ano ?></button></td>
+              <td class="text-uppercase"><button class="btn btn-default"><?php echo $c->id ?><?php echo $ano ?></button></td>
               <td class="text-center">
                 <?php
                 $fecha = $c->fecha_hora_asignado_consignado;

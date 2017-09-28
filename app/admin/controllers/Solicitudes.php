@@ -4,6 +4,7 @@ namespace App\admin\controllers;
 use App\Categoria;
 use App\DetalleSolicitud;
 use App\Entrega;
+use App\EntregaImagen;
 use App\Organismo;
 use App\Paso;
 use App\Requerimientos;
@@ -167,7 +168,22 @@ class Solicitudes
 
         if($entrega->save() and $solicitud->save())
         {
-            Success('solicitudes/'.$solicitud->id,'Solicitud fue entregada.');
+            $imagen = new EntregaImagen;
+            $imagen->solicitudes_entregas_id = $entrega->id;
+            $imagen->imagen_original = 'https://process.filestackapi.com/AhTgLagciQByzXpFGRI0Az/resize=w:1000/quality=value:70/compress/'.$imagen;
+            $imagen->imagen_grande = 'https://process.filestackapi.com/AhTgLagciQByzXpFGRI0Az/resize=w:800/quality=value:70/compress/'.$imagen;
+            $imagen->imagen_medio = 'https://process.filestackapi.com/AhTgLagciQByzXpFGRI0Az/resize=w:400/quality=value:70/compress/'.$imagen;
+            $imagen->imagen_miniatura = 'https://process.filestackapi.com/AhTgLagciQByzXpFGRI0Az/resize=w:250/quality=value:70/compress/'.$imagen;
+            //return $laboratorio->id;
+
+            if($imagen->save())
+            {
+                Success('solicitudes/'.$solicitud->id,'Solicitud fue entregada.');
+            }
+            else
+            {
+                Error('consultas/aprobadas','Error.');
+            }
         }
         else
         {

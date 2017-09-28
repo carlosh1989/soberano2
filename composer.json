@@ -25,7 +25,8 @@
         "railto/flash-messages": "1.0.*",
         "nesbot/carbon": "^1.22",
         "beelab/bowerphp": "^0.5.2",
-        "windwalker/edge": "^3.2"
+        "windwalker/edge": "^3.2",
+        "mpdf/mpdf": "6.1.x-dev"
     },
     "autoload": {
         "psr-4": {

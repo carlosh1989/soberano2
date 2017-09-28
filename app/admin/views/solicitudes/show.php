@@ -28,7 +28,7 @@ display: none;
   <div class="panel-heading">
     <h4 class="panel-title text-muted text-uppercase"><i class="fa fa-clipboard fa-2x"></i> SOLICITUD<b> <?php echo $solicitud->tipo_solicitud->nombre ?></b>
     <a class="pull-right" href="<?php echo baseUrl ?>admin/solicitantes/<?php echo $solicitud->solicitante_id ?>">
-    <i class="fa fa-search"></i><i class="fa fa-user fa-2x"></i>
+      <i class="fa fa-search"></i><i class="fa fa-user fa-2x"></i>
     </a>
     </h4>
   </div>
@@ -37,6 +37,10 @@ display: none;
       <div class="col-lg-6 animated fadeIn">
         <table class="table table-user-information panel panel-default animated fadeIn">
           <tbody>
+            <tr class="text-uppercase">
+              <td width="40%" style="background: #E9E9E9;"><b><i class="fa fa-barcode"></i> Solicitud N°:</b></td>
+              <td><?php echo $solicitud->cod ?></td>
+            </tr>
             <tr class="text-uppercase">
               <td width="40%" style="background: #E0E0E0;"><b><i class="fa fa-user"></i> Solicitante:</b></td>
               <td><?php echo ucwords($solicitud->solicitante->nombre_apellido) ?></td>
@@ -78,8 +82,8 @@ display: none;
               <td>
                 <?php if ($solicitud->estatus == 1): ?>
                 <button onclick="cerrar()" type="submit" class="btn btn-primary">
-                  <i class="fa fa-search"></i> En estudio
-                  </button>
+                <i class="fa fa-search"></i> En estudio
+                </button>
                 <?php endif ?>
                 <?php if ($solicitud->estatus == 2): ?>
                 <a class="btn btn-success" href="#"><i class="fa fa-check-square"></i> APROBADO</a>
@@ -88,7 +92,7 @@ display: none;
                 <a class="btn btn-danger" href="#"><i class="fa fa-window-close"></i> RECHAZADO</a>
                 <?php endif ?>
                 <?php if ($solicitud->estatus == 4): ?>
-                <a class="btn btn-success" href="#"><i class="fa fa-share-square"></i> ENTREGADAS</a>
+                <a class="btn btn-success" href="#"><i class="fa fa-share-square"></i> ENTREGADO</a>
                 <?php endif ?>
               </td>
             </tr>
@@ -99,12 +103,20 @@ display: none;
       <div class="col-lg-6 animated fadeIn panel panel-default animated">
         <div class="">
           <h5 class="text-muted text-primary">
-          <i class="fa fa-file"></i> DOCUMENTOS ASIGNADOS
+          <i class="fa fa-file"></i> DOCUMENTOS CONSIGNADOS
           </h5>
-          <hr>
         </div>
         <?php if ($solicitud->documentos_consignados[0]->id): ?>
-        <div class="form-group">
+        <style>
+        .ul {
+        list-style: none;
+        }
+        .ul li:before {
+        content: '✓';
+        font-size: 1.1em;
+        }
+        </style>
+        <ul class="ul">
           <?php foreach ($solicitud->documentos_consignados as $key => $r): ?>
           <?php if ($r->requerimiento->prioridad == true): ?>
           <?php $required = "required" ?>
@@ -113,25 +125,15 @@ display: none;
           <?php $required = "" ?>
           <?php $requerido ="" ?>
           <?php endif ?>
-          <div class="[ form-group ]">
-            <input type="checkbox" name="requerimientos[]" id="fancy-checkbox-default-custom-icons-<?php echo $r->id ?>"  <?php echo $required ?> value="<?php echo $r->id ?>"/>
-            <div class="[ btn-group ]">
-              <label for="fancy-checkbox-default-custom-icons-<?php echo $r->requerimiento->id ?>" class="[ btn btn-default ]">
-                <span class="fa fa-check"></span>
-              </label>
-              <label for="fancy-checkbox-default-custom-icons-<?php echo $r->requerimiento->id ?>" class="[ btn btn-default active ]">
-                <?php echo $r->requerimiento->nombre ?>
-                <?php echo $r->nombre ?>
-                <?php if ($requerido == "(Obligatorio)"): ?>
-                <label class="text-danger"> <?php echo $requerido?></label>
-                <?php else: ?>
-                <label class="text-primary"> <?php echo $requerido?></label>
-                <?php endif ?>
-              </label>
-            </div>
-          </div>
+          <li><?php echo $r->requerimiento->nombre ?>
+            <?php if ($requerido == "(Obligatorio)"): ?>
+            <label class="text-danger"> <?php echo $requerido?></label>
+            <?php else: ?>
+            <label class="text-primary"> <?php echo $requerido?></label>
+            <?php endif ?>
+          </li>
           <?php endforeach ?>
-        </div>
+        </ul>
       </div>
       <?php else: ?>
       <div class="form-group">
@@ -141,7 +143,6 @@ display: none;
       <br>
     </div>
     <?php endif ?>
-
     <?php if ($solicitud->estatus == 3): ?>
     <div class="col-lg-6 animated fadeIn panel panel-default animated">
       <div class="">
@@ -164,13 +165,13 @@ display: none;
         </h5>
       </div>
       <div class="panel-body text-uppercase">
-      <b>RESPONSABLE:</b> <?php echo $solicitud->datos_entrega->responsable ?>
-      <br>
-      <b>lugar:</b> <?php echo $solicitud->datos_entrega->lugar ?>
-      <br>
-      <b>fecha:</b> <?php echo $solicitud->datos_entrega->fecha_entrega ?>
-      <br>
-      <b>Observación:</b> <?php echo $solicitud->datos_entrega->observacion ?>
+        <b>ENTREGADO POR:</b> <?php echo $solicitud->datos_entrega->responsable ?>
+        <br>
+        <b>lugar:</b> <?php echo $solicitud->datos_entrega->lugar ?>
+        <br>
+        <b>fecha:</b> <?php echo $solicitud->datos_entrega->fecha_entrega ?>
+        <br>
+        <b>Observación:</b> <?php echo $solicitud->datos_entrega->observacion ?>
       </div>
       <br>
     </div>

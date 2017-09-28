@@ -74,7 +74,7 @@
             <?php foreach (Paginator($solicitante->solicitudes,4) as $c): ?>
             <tr>
               <td>
-                <button class="btn btn-default">#<?php echo $c->cod ?></button>
+                <button class="btn btn-default"><?php echo $c->cod ?></button>
               </td>
               <td class="text-uppercase">
               <?php  
