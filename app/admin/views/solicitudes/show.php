@@ -27,6 +27,9 @@ display: none;
 <div id="panel" class="panel panel-primary">
   <div class="panel-heading">
     <h4 class="panel-title text-muted text-uppercase"><i class="fa fa-clipboard fa-2x"></i> SOLICITUD<b> <?php echo $solicitud->tipo_solicitud->nombre ?></b>
+    <a class="pull-right" href="<?php echo baseUrl ?>admin/solicitantes/<?php echo $solicitud->solicitante_id ?>">
+    <i class="fa fa-search"></i><i class="fa fa-user fa-2x"></i>
+    </a>
     </h4>
   </div>
   <div class="panel-body">
@@ -160,7 +163,16 @@ display: none;
         <i class="fa fa-send"></i> INFORMACIÓN DE ENTREGA
         </h5>
       </div>
-      <hr>
+      <div class="panel-body text-uppercase">
+      <b>RESPONSABLE:</b> <?php echo $solicitud->datos_entrega->responsable ?>
+      <br>
+      <b>lugar:</b> <?php echo $solicitud->datos_entrega->lugar ?>
+      <br>
+      <b>fecha:</b> <?php echo $solicitud->datos_entrega->fecha_entrega ?>
+      <br>
+      <b>Observación:</b> <?php echo $solicitud->datos_entrega->observacion ?>
+      </div>
+      <br>
     </div>
     <?php endif ?>
   </div>

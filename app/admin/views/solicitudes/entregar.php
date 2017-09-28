@@ -72,8 +72,8 @@ $("#IngresarSolicitante").submit();
           </div>
         </div>
         <div class="col-lg-12">
-          <textarea name="observacion" class="editor">
-          OBERSVACIONES
+          <textarea name="observacion" class="editor" placeholder="OBSERVACIONES">
+          
           </textarea>
         </div>
       </div>

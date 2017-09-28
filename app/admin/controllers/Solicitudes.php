@@ -155,10 +155,11 @@ class Solicitudes
         extract($_POST);
         //Arr($_POST);
         $entrega = new Entrega;
+        $entrega->solicitud_id = $solicitud_id;
         $entrega->responsable = $responsable;
         $entrega->lugar = $lugar;
         $entrega->fecha_entrega = $fecha_entrega;
-        $entrega->obervacion = $observacion; 
+        $entrega->observacion = $observacion; 
 
         $solicitud = Solicitud::find($solicitud_id);
         $solicitud->estatus = 4;

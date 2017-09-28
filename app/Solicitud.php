@@ -2,6 +2,7 @@
 namespace App;
 use App\Categoria;
 use App\DetalleSolicitud;
+use App\Entrega;
 use App\Organismo;
 use App\Paso;
 use App\Solicitante;
@@ -41,6 +42,11 @@ class Solicitud extends Model {
 	public function Pasos()
 	{
 		return $this->hasOne(Paso::class, 'solicitud_id', 'id');
+	}
+
+	public function datos_entrega()
+	{
+		return $this->hasOne(Entrega::class, 'solicitud_id', 'id');
 	}
 }
 

@@ -9,7 +9,7 @@
                         <hr class="star-primary">
                     </div>
                 </div>
-                <div class="row">-
+                <div class="row">
                     <div class="col-lg-12 col-lg-offset-0">
                         <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
                         <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
