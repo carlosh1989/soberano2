@@ -1,6 +1,10 @@
 <?php
 namespace App\admin\controllers;
 
+use App\Solicitud;
+use App\Tipo;
+use Dompdf\Dompdf;
+
 class Reportes
 {
     function __construct()
@@ -41,6 +45,63 @@ class Reportes
     public function destroy($id)
     {
 
+    }
+
+    public function abiertas()
+    {
+        $solicitudes = Solicitud::orderBy('id', 'DESC')->where('estatus',1)->get();
+        View(compact('solicitudes'));
+    }
+
+    public function abiertasPDF2()
+    {
+        // reference the Dompdf namespace
+        // instantiate and use the dompdf class
+        $dompdf = new Dompdf();
+        $solicitudes = Solicitud::orderBy('id', 'DESC')->where('estatus',1)->get();
+        ob_start();
+        include('app/admin/views/reportes/abiertas.php');
+
+        $dompdf->loadHtml(ob_get_clean());
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'landscape');
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser
+        $dompdf->stream();
+    }
+
+    public function abiertasPDF()
+    {
+        extract($_GET);
+
+        if(isset($tipo))
+        {
+            $solicitudes = Solicitud::orderBy('id', 'DESC')
+            ->where('tipo_solicitud_id',$tipo)
+            ->where('estatus',2)
+            ->get();
+            $tipo_seleccion = Tipo::find($tipo);
+        }
+        else
+        {
+            $solicitudes = Solicitud::orderBy('id', 'DESC')
+            ->where('estatus',2)
+            ->get();
+            $tipo_seleccion = "";
+        }
+        
+        $tipos = Tipo::all();
+        ob_start();
+        include('app/admin/views/reportes/abiertas.php');
+        $dompdf = new Dompdf();
+        $baseUrl = baseUrl;
+        $dompdf->setBasePath($baseUrl); // This line resolve
+        $dompdf->loadHtml(ob_get_clean());
+        $dompdf->setPaper('letter', 'landscape');
+        $dompdf->render();
+        $dompdf->stream();
     }
 
     public function lista_pensionados()

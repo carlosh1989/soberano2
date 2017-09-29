@@ -26,7 +26,7 @@
         "nesbot/carbon": "^1.22",
         "beelab/bowerphp": "^0.5.2",
         "windwalker/edge": "^3.2",
-        "mpdf/mpdf": "6.1.x-dev"
+        "dompdf/dompdf":"*"
     },
     "autoload": {
         "psr-4": {

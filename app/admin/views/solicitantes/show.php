@@ -54,7 +54,7 @@
       <div class="col-lg-6 animated fadeIn panel panel-default animated">
         <div class="">
           <h5 class="text-muted text-primary">
-          <i class="fa fa-file"></i> DOCUMENTOS CONSIGNADOS
+          <i class="fa fa-file"></i> SOLICITUDES 
           <a class="btn btn-default pull-right" href="<?php echo baseUrl ?>admin/solicitudes/create/<?php echo $solicitante->id ?>"><i class="fa fa-files-o text-primary"></i> Agregar Solicitud</a>
           </h5>
           <hr>
