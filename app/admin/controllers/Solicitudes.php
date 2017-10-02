@@ -28,25 +28,64 @@ class Solicitudes
         $usuario = Session::get('current_user');
         $organismo_id = $usuario['organismo_id']; 
 
-        if(isset($tipo) and $tipo)
+        if(isset($municipio_id) and $municipio_id and isset($parroquia_id) and $parroquia_id)
         {
-            $solicitudes = Solicitud::orderBy('id', 'DESC')
-            ->where('organismo_id',$organismo_id)
-            ->where('estatus',1)
-            ->get();
-            $tipo_seleccion = Tipo::find($tipo);
+            if(isset($tipo) and $tipo)
+            {
+                $solicitudes = Solicitud::orderBy('id', 'DESC')
+                ->where('tipo_solicitud_id',$tipo)
+                ->where('municipio_id',$municipio_id)
+                ->where('parroquia_id',$parroquia_id)
+                ->where('organismo_id',$organismo_id)
+                ->where('estatus',1)
+                ->get();
+                $tipo_seleccion = Tipo::find($tipo);
+                $municipio_seleccion = $municipio_id;
+                $parroquia_seleccion = $parroquia_id;
+            }
+            else
+            {
+                $solicitudes = Solicitud::orderBy('id', 'DESC')
+                ->where('municipio_id',$municipio_id)
+                ->where('parroquia_id',$parroquia_id)
+                ->where('organismo_id',$organismo_id)
+                ->where('estatus',1)
+                ->get();
+                $tipo_seleccion = "";
+                $municipio_seleccion = $municipio_id;
+                $parroquia_seleccion = $parroquia_id;
+            }
         }
         else
         {
-            $solicitudes = Solicitud::orderBy('id', 'DESC')
-            ->where('organismo_id',$organismo_id)
-            ->where('estatus',1)
-            ->get();
-            $tipo_seleccion = "";
+            if(isset($tipo) and $tipo)
+            {
+                $solicitudes = Solicitud::orderBy('id', 'DESC')
+                ->where('organismo_id',$organismo_id)
+                ->where('estatus',1)
+                ->get();
+                $tipo_seleccion = Tipo::find($tipo);
+                $municipio_seleccion = "";
+                $parroquia_seleccion = "";
+            }
+            else
+            {
+                $solicitudes = Solicitud::orderBy('id', 'DESC')
+                ->where('organismo_id',$organismo_id)
+                ->where('estatus',1)
+                ->get();
+                $tipo_seleccion = "";
+                $municipio_seleccion = "";
+                $parroquia_seleccion = "";
+            }
         }
+
         
         $tipos = Tipo::all();
-        View(compact('solicitudes','tipos','tipo_seleccion'));
+        View(compact(
+            'solicitudes','tipos','tipo_seleccion',
+            'municipio_seleccion','parroquia_seleccion'
+        ));
     }
 
     public function create()
@@ -196,12 +235,16 @@ class Solicitudes
         //Arr($_POST);
         //TABLA SOLICITUDES
         extract($_POST);
+        $solicitante = Solicitante::find($solicitante_id);
+
         $solicitud = new Solicitud;
         $solicitud->cod = 0;
         $solicitud->organismo_id = $organismo_id;
         $solicitud->requerimiento_categoria_id = $requerimiento_categoria_id;
         $solicitud->solicitante_id = $solicitante_id;
         $solicitud->tipo_solicitud_id = $tipo_solicitud_id;
+        $solicitud->municipio_id = $solicitante->municipio_id;
+        $solicitud->parroquia_id = $solicitante->parroquia_id;
         $solicitud->fecha_hora_registrado = Carbon::now();
         $solicitud->monto_solicitado = $monto_solicitado;
         $solicitud->observacion = $observacion_solicitud;

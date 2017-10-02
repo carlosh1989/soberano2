@@ -6,9 +6,58 @@
     <div class="row">
       <div class="col-md-12">
         <form id="formulario" method="GET" action="">
-          <div class="col-md-6">
-            <select name="tipo" class="form-control" onchange="this.form.submit()">
+          <div class="col-lg-3">
+            <div class="form-group">
+              <select id="municipioSelect" class="form-control" name="municipio_id"/>
+                <?php
+                use App\Municipio;
+                $municipios = Municipio::all();
+                ?>
+                <?php if(isset($municipio_seleccion) and $municipio_seleccion): ?>
+                <?php $municipio_solicitante = Municipio::find($municipio_seleccion); ?>
+                <option value="<?php echo $municipio_solicitante->id ?>"><?php echo $municipio_solicitante->nombre ?></option>
+                <option value="">MUNICIPIOS</option>
+                <option value=""></option>
+                <?php else: ?>
+                <option value="">MUNICIPIOS</option>
+                <?php endif ?>
+                <option value=""></option>
+                <?php foreach ($municipios as $municipio): ?>
+                <option value="<?php echo $municipio->id ?>"><?php echo $municipio->nombre ?></option>
+                <?php endforeach ?>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="form-group">
+              <select id="parroquiaSelect" class="form-control" name="parroquia_id"/>
+                <?php
+                use App\Parroquia;
+                $parroquias = Parroquia::all();
+                ?>
+                <?php if (isset($parroquia_seleccion) and $parroquia_seleccion): ?>
+                <?php $parroquia_solicitante = Parroquia::find($parroquia_seleccion); ?>
+                <option value="<?php echo $parroquia_solicitante->id ?>"><?php echo $municipio_solicitante->nombre ?></option>
+                <option value="">PARROQUIAS</option>
+                <option value=""></option>
+                <?php else: ?>
+                <option value="">PARROQUIAS</option>
+                <?php endif ?>
+                <option value=""></option>
+                <?php foreach ($parroquias as $parroquia): ?>
+                <option value="<?php echo $parroquia->id ?>"><?php echo $parroquia->nombre ?></option>
+                <?php endforeach ?>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <select name="tipo" class="form-control text-uppercase">
+              <!--  <select name="tipo" class="form-control" onchange="this.form.submit()"> -->
+              <?php if ($tipo_seleccion): ?>
+              <option class="text-uppercase" value="<?php echo $tipo_seleccion->id ?>"><?php echo $tipo_seleccion->nombre ?></option>
+              <?php else: ?>
               <option value="1">TIPO SOLICITUD</option>
+              <?php endif ?>
               <option value="">TODAS</option>
               <option value=""></option>
               <?php foreach ($tipos as $key => $t): ?>
@@ -16,8 +65,12 @@
               <?php endforeach ?>
             </select>
           </div>
+          <div class="col-md-3">
+            <button class="btn btn-primary fa fa-search btn-lg"></button>
+          </div>
         </form>
       </div>
+    </div>
     </div>
     <br>
     <h5 class="text-muted text-primary text-center text-uppercase">
