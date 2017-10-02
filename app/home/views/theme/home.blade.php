@@ -113,5 +113,11 @@
         <script src="<?php echo baseUrl ?>assets/js/contact_me.js"></script>
         <!-- Theme JavaScript -->
         <script src="<?php echo baseUrl ?>assets/js/freelancer.min.js"></script>
+
+        <script>
+                $(document).ready(function(){
+      $('.slider').slider();
+    });
+        </script>
     </body>
 </html>
