@@ -71,7 +71,6 @@
         </form>
       </div>
     </div>
-    </div>
     <br>
     <h5 class="text-muted text-primary text-center text-uppercase">
     <i class="fa fa-folder-open-o" aria-hidden="true"></i>
