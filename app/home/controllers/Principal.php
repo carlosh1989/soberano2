@@ -2,7 +2,10 @@
 namespace App\home\controllers;
 
 use App\Donante;
+use App\Entrega;
 use App\Laboratorio;
+use App\Solicitante;
+use App\Solicitud;
 use App\home\models\PrincipalModel;
 use Controller,View,Token,Session,Arr,Message,Redirect,Permission,Url;
 
@@ -21,32 +24,35 @@ class Principal extends Controller
         }
         else
         {
-            View::ver('home/principal/index');  
+            $entregas = Entrega::where('portada',1)->get();
+            //Arr($entregas);
+            //View::ver('home/principal/index'); 
+            View(compact('entregas')); 
         }
     }
 
-    public function consultar()
+    public function consulta()
     {
-    	extract($_POST);
+        extract($_POST);
 
-    	$donante = Donante::where('cedula',$cedula)->first();
+        if(isset($cedula) and $cedula and isset($cod) and $cod)
+        {
+            $solicitante = Solicitante::where('cedula',$cedula)->first();
 
-    	if($donante)
-    	{
-    		$donante = $donante->tipeaje->ABO.''.$donante->tipeaje->RH;
-    		if($donante)
-    		{
-	        	Redirect::send('home/principal/index#consulta','success','Su tipo de sangre es '.$donante);
-
-    		}
-    		else
-    		{
-	        	Redirect::send('home/principal/index#laboratorios','error','No se le ha hecho el tipeaje, puede dirigirse a algunos de los laboratorios parte del sistema.');
-    		}
-    	}    	
-    	else
-    	{
-	        Redirect::send('home/principal/index#laboratorios','error','Usted no se encuentra en el sistema, dirijase al laboratorio mas cercano a usted para que pueda ingresar en el sistema.');
-    	}
+            if (!$solicitante) 
+            {
+                Redirect::send('home/principal/consulta','error','El solicitante no se encuentra registrado en el sistema.');
+            } 
+            else 
+            {
+                $solicitud = Solicitud::where('cod',$cod)->first();       
+            }
+        }
+        else
+        {
+            $solicitud = "";
+        }
+        
+        View(compact('solicitud'));
     }
 }

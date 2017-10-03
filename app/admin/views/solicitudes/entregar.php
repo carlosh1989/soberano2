@@ -33,19 +33,28 @@ border-color: #4d90fe;
       <?php echo Token::field() ?>
       <input type="hidden" name="solicitud_id" value="<?php echo $solicitud_id ?>">
       <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-3">
           <div class="form-group">
             <input class="form-control" type="text" name="responsable" placeholder="Responsable" required/>
           </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-3">
           <div class="form-group">
             <input class="form-control" type="text" name="lugar" placeholder="Lugar" required/>
           </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-3">
           <div class="form-group">
             <input class="datepicker" type="text" name="fecha_entrega" placeholder="Fecha entrega" required/>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="form-group">
+          <select name="portada" class="form-control" required>
+            <option value="">En portada?</option>
+            <option value="0">No</option>
+            <option value="1">Si</option>
+          </select>
           </div>
         </div>
         <script>
@@ -63,7 +72,7 @@ border-color: #4d90fe;
           <div class="col-md-2">
             <div class="form-group">
               <script src="//api.filestackapi.com/filestack.js" type="text/javascript"></script>
-              <input class="btn btn-primary" name="imagenEntrega" onchange="cambiarImagen(event.fpfile.url)" data-fp-services="COMPUTER,URL,WEBCAM" data-fp-button-text="Ingresar Imagen" data-fp-maxsize="1000000" data-fp-container="modal" data-fp-mimetypes="image/*" data-fp-apikey="A1nL8omiAR8W7pHi3cotzz" type="filepicker">
+              <input class="btn btn-primary" name="imagenEntrega" onchange="cambiarImagen(event.fpfile.url)" data-fp-services="COMPUTER,URL" data-fp-button-text="Ingresar Imagen" data-fp-maxsize="1000000" data-fp-container="modal" data-fp-crop-max="400, 300" data-fp-crop-force="true" data-fp-mimetypes="image/*" data-fp-apikey="A1nL8omiAR8W7pHi3cotzz" type="filepicker">
             </div>
           </div>
           <div id="imagenSubidaDiv" class="col-md-10">

@@ -200,6 +200,7 @@ class Solicitudes
         $entrega->lugar = $lugar;
         $entrega->fecha_entrega = $fecha_entrega;
         $entrega->observacion = $observacion; 
+        $entrega->portada = $portada;
 
         $solicitud = Solicitud::find($solicitud_id);
         $solicitud->estatus = 4;

@@ -1,6 +1,7 @@
 <?php 
 namespace App;
 use App\EntregaImagen;
+use App\Solicitud;
 use \Illuminate\Database\Eloquent\Model;
  
 class Entrega extends Model {
@@ -12,6 +13,11 @@ class Entrega extends Model {
 	public function imagen()
 	{
 		return $this->hasOne(EntregaImagen::class, 'solicitudes_entregas_id', 'id');
+	}
+
+	public function solicitud()
+	{
+		return $this->belongsTo(Solicitud::class, 'solicitud_id', 'id');
 	}
 }
 
