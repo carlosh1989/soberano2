@@ -26,8 +26,8 @@ class Principal extends Controller
         {
             $entregas = Entrega::where('portada',1)->get();
             //Arr($entregas);
-            //View::ver('home/principal/index'); 
-            View(compact('entregas')); 
+            View::ver('home/principal/index',compact('entregas')); 
+            //View(compact('entregas')); 
         }
     }
 
@@ -41,18 +41,26 @@ class Principal extends Controller
 
             if (!$solicitante) 
             {
-                Redirect::send('home/principal/consulta','error','El solicitante no se encuentra registrado en el sistema.');
+                Redirect::send('home/principal/consulta','error','Solicitante no registrado en el sistema.');
             } 
             else 
             {
-                $solicitud = Solicitud::where('cod',$cod)->first();       
+                $solicitud = Solicitud::where('cod',$cod)->first();  
+
+                if(!$solicitud)
+                {
+                    Redirect::send('home/principal/consulta','error','No existe Solicitud.');
+                } 
+                else
+                {
+                    View(compact('solicitud'));    
+                }
             }
         }
         else
         {
             $solicitud = "";
+            View(compact('solicitud'));
         }
-        
-        View(compact('solicitud'));
     }
 }
