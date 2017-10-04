@@ -26,7 +26,8 @@
         "nesbot/carbon": "^1.22",
         "beelab/bowerphp": "^0.5.2",
         "windwalker/edge": "^3.2",
-        "dompdf/dompdf":"*"
+        "dompdf/dompdf":"*",
+        "google/recaptcha": "~1.1"
     },
     "autoload": {
         "psr-4": {

@@ -1,3 +1,5 @@
+<link href="<?php echo baseUrl ?>assets/bower/lightbox2/dist/css/lightbox.min.css" rel="stylesheet">
+<script src="<?php echo baseUrl ?>assets/bower/lightbox2/dist/js/lightbox.min.js"></script>
 <style>
 .indicators
 {
@@ -35,7 +37,6 @@ column-count: 3;
 text-align: center;
 }
 </style>
-<link href="<?php echo baseUrl ?>assets/bower/lightbox2/dist/css/lightbox.min.css" rel="stylesheet">
 <div class="slider" style="margin-top: -6px;">
     <ul class="slides z-depth-3">
         <li>
@@ -71,7 +72,7 @@ text-align: center;
 <div class="row">
     <?php foreach ($entregas as $key => $en): ?>
     <div class="col s12 m3">
-        <div class="card small darken-2 z-depth-2">
+        <div class="noticias card small darken-2 z-depth-2 animated bounceIn">
             <div class="card-image waves-effect waves-block waves-light">
                 
                 <a href="<?php echo $en->imagen->imagen_grande ?>" data-lightbox="<?php echo $en->imagen->imagen_medio ?>" data-title="<?php echo $en->solicitud->tipo_solicitud->nombre ?>"><img class="responsive-img" src="<?php echo $en->imagen->imagen_medio ?>"></a>
@@ -88,4 +89,3 @@ text-align: center;
     </div>
     <?php endforeach ?>
 </div>
-<script src="<?php echo baseUrl ?>assets/bower/lightbox2/dist/js/lightbox.min.js"></script>

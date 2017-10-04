@@ -224,6 +224,12 @@ if(baseUrl)
 		/*
 		Constantes para controlador default
 		*/
+		list($app,$modulo,$controllers,$controlador) = explode('\\',ClaseDefault);
+		$controlador = strtolower($controlador);
+		define('URI_MODULO', $modulo);	
+		define('URI_CONTROLADOR', $controlador);
+
+
 		$controladorDefault = ClaseDefault;
 		$metodoDefault = metodoDefault;
 
