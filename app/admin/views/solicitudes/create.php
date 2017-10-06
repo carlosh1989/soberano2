@@ -36,6 +36,30 @@ $("#CategoriasSelect").html(data);
 });
 })
 });
+$(document).ready(function(){
+$('.monto').maskMoney({prefix:'Bs. ', allowNegative: true, thousands:'.', decimal:',', affixesStay: true});
+$("#preguntaBeneficiario").change(function () {
+$("#preguntaBeneficiario option:selected").each(function () {
+//organismo_id = $(this).val();
+//id1 = $(this).val();
+var pregunta_beneficiario = $(this).val();
+if (pregunta_beneficiario==1)
+{
+//alert(organismo_id);
+$("#cedulaBeneficiario").prop('required',true);
+$("#cedulaBeneficiario").css("display", "block");
+$("#cedulaBeneficiario").addClass( "animated fadeIn" );
+}
+else
+{
+$("#cedulaBeneficiario").prop('required',false);
+$("#cedulaBeneficiario").css("display", "none");
+$("#cedulaBeneficiario").removeClass( "animated fadeIn" );
+//alert('otras');
+}
+});
+})
+});
 </script>
 <div id="panel" class="panel panel-primary">
   <div class="panel-heading">
@@ -43,8 +67,43 @@ $("#CategoriasSelect").html(data);
   </div>
   <br>
   <div class="panel-body">
+  <?php if (isset($beneficiario) and $beneficiario): ?>
+    
+  <?php else: ?>
+    <form action="<?php echo baseUrl ?>admin/solicitudes/create/<?php echo $solicitante->id ?>" method="GET">
+      <?php echo Token::field() ?>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="form-group">
+            <select id="preguntaBeneficiario" class="form-control text-uppercase" name="tipo_solicitud"  onchange="">
+              <option value="">El solicitante es el mismo beneficiario?</option>
+              <option value=""></option>
+              <option value="2">SI</option>
+              <option value="1">NO</option>
+            </select>
+          </div>
+        </div>
+        <div style="display: none" id="cedulaBeneficiario" class="col-lg-12 ">
+          <div class="col-lg-4">
+            <input name="beneficiario_cedula" class="form-control" type="text" placeholder="INGRESE CEDULA DE BENEFICIARIO">
+          </div>
+          <div class="col-lg-2">
+            <button type="submit" class="btn btn-primary fa fa-search fa-2x"></button>
+          </div>
+          <div style="display: none" id="cedulaBeneficiario" class="form-group">
+          </div>
+        </div>
+      </div>
+    </form>
+  <?php endif ?>
+
     <form action="<?php echo baseUrl ?>admin/solicitudes/documentos" method="POST">
       <?php echo Token::field() ?>
+      <?php if (isset($beneficiario) and $beneficiario): ?>
+      
+      <?php else: ?>
+        
+      <?php endif ?>
       <input type="hidden"  name="solicitante_id" value="<?php echo $solicitante->id ?>">
       <div class="row">
         <div class="col-lg-12">

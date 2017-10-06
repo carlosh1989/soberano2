@@ -29,8 +29,8 @@
               <td class="text-uppercase"><?php echo $solicitante->telefono2 ?></td>
             </tr>
             <tr>
-              <td style="background: #E9E9E9;"><b><i class="fa fa-map-pin"></i> Municipio:</b></td>
-              <td><?php echo $solicitante->municipio->nombre ?></td>
+              <td class="text-uppercase" style="background: #E9E9E9;"><b><i class="fa fa-map-pin"></i> Municipio:</b></td>
+              <td class="text-uppercase"><?php echo $solicitante->municipio->nombre ?></td>
             </tr>
             <tr>
               <td class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa-map-marker"></i> Parroquia:</b></td>

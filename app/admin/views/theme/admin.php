@@ -30,6 +30,7 @@
     <script src="<?php echo baseUrl ?>assets/bower/pickadate/lib/picker.time.js"></script>
     <script src="<?php echo baseUrl ?>assets/bower/pickadate/lib/picker.date.js"></script>
     <script src="<?php echo baseUrl ?>assets/bower/pickadate/lib/translations/es_ES.js"></script>
+    
     <style>
     body{
     background-color: #222;

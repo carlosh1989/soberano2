@@ -90,9 +90,42 @@ class Solicitudes
 
     public function create()
     {
+        extract($_GET);
+
+        if(isset($beneficiario_cedula) and $beneficiario_cedula) 
+        {
+            $jefe = Jefe::where('cedula',$beneficiario_cedula)->first();
+            $carga = Carga::where('cedula',$beneficiario_cedula)->first();
+
+            if($jefe)
+            {
+                $beneficiario['fecha_nacimiento'] = $jefe->fecha_nacimiento;
+                $beneficiario['nacionalidad'] = $jefe->tipo;   
+                $beneficiario['cedula']  = $cedula;            
+                $beneficiario['nombre_apellido'] = $jefe->nombre_apellido; 
+                $beneficiario = (object) $beneficiario;
+            }
+            else
+            {
+                if($carga)
+                {
+                    $beneficiario['fecha_nacimiento'] = $carga->fecha_nacimiento;
+                    $beneficiario['nacionalidad'] = $carga->nac;   
+                    $beneficiario['cedula']  = $cedula;            
+                    $beneficiario['nombre_apellido'] = $carga->nombre_y_apellido; 
+                    $beneficiario = (object) $beneficiario;
+                }
+                else
+                {
+                    $beneficiario['cedula']  = $beneficiario_cedula; 
+                    $beneficiario = (object) $beneficiario;
+                }
+            }
+        }
+
         $solicitante = Solicitante::find(Uri(5));
         $tipos = Tipo::all();
-        View(compact('solicitante','tipos','requerimientos'));
+        View(compact('solicitante','tipos','requerimientos','beneficiario'));
     }
 
     public function documentos()
