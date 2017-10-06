@@ -100,7 +100,21 @@ $("#cedulaBeneficiario").removeClass( "animated fadeIn" );
     <form action="<?php echo baseUrl ?>admin/solicitudes/documentos" method="POST">
       <?php echo Token::field() ?>
       <?php if (isset($beneficiario) and $beneficiario): ?>
-      
+        <div class="col-lg-12">
+          <div class="form-group">
+            <input class="form-control" type="text" name="monto_solicitado" class="form-control" placeholder="CÉDULA DEL BENEFICIARIO" required="">
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="form-group">
+            <input class="form-control" type="text" name="monto_solicitado" class="form-control" placeholder="NOMBRE Y APELLIDO DEL BENEFICIARIO" required="">
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="form-group">
+            <input class="form-control" type="text" name="monto_solicitado" class="form-control" placeholder="FECHA NACIMIENTO DE BENEFICIARIO" required="">
+          </div>
+        </div>
       <?php else: ?>
         
       <?php endif ?>

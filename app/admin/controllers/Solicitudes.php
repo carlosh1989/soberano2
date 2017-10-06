@@ -1,10 +1,12 @@
 <?php
 namespace App\admin\controllers;
 
+use App\Carga;
 use App\Categoria;
 use App\DetalleSolicitud;
 use App\Entrega;
 use App\EntregaImagen;
+use App\Jefe;
 use App\Organismo;
 use App\Paso;
 use App\Requerimientos;
@@ -101,7 +103,7 @@ class Solicitudes
             {
                 $beneficiario['fecha_nacimiento'] = $jefe->fecha_nacimiento;
                 $beneficiario['nacionalidad'] = $jefe->tipo;   
-                $beneficiario['cedula']  = $cedula;            
+                $beneficiario['cedula']  = $beneficiario_cedula;            
                 $beneficiario['nombre_apellido'] = $jefe->nombre_apellido; 
                 $beneficiario = (object) $beneficiario;
             }
@@ -111,7 +113,7 @@ class Solicitudes
                 {
                     $beneficiario['fecha_nacimiento'] = $carga->fecha_nacimiento;
                     $beneficiario['nacionalidad'] = $carga->nac;   
-                    $beneficiario['cedula']  = $cedula;            
+                    $beneficiario['cedula']  = $beneficiario_cedula;            
                     $beneficiario['nombre_apellido'] = $carga->nombre_y_apellido; 
                     $beneficiario = (object) $beneficiario;
                 }
