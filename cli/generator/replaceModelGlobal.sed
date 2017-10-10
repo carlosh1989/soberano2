@@ -1,3 +1,3 @@
 
-s/${model}/EntregaImagen/
-s/${tabla}/solicitudes_entregas_imagenes/
+s/${model}/Beneficiario/
+s/${tabla}/beneficiarios/

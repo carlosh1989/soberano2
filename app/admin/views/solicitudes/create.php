@@ -83,7 +83,8 @@ $("#cedulaBeneficiario").removeClass( "animated fadeIn" );
             </select>
           </div>
         </div>
-        <div style="display: none" id="cedulaBeneficiario" class="col-lg-12 ">
+        <br>
+        <div style="display: none" id="cedulaBeneficiario">
           <div class="col-lg-4">
             <input name="beneficiario_cedula" class="form-control" type="text" placeholder="INGRESE CEDULA DE BENEFICIARIO">
           </div>
@@ -95,25 +96,31 @@ $("#cedulaBeneficiario").removeClass( "animated fadeIn" );
         </div>
       </div>
     </form>
+    <br>
     <?php endif ?>
     <form action="<?php echo baseUrl ?>admin/solicitudes/documentos" method="POST">
       <?php echo Token::field() ?>
       <?php if (isset($beneficiario) and $beneficiario): ?>
-        <div class="col-lg-4">
-          <div class="form-group">
-            <input class="form-control" type="text" name="beneficiario_cedula" class="form-control" placeholder="CÉDULA DEL BENEFICIARIO" value="<?php echo $beneficiario->cedula ?>" required>
+      <div class="panel panel-default">
+        <div class="panel-heading"><i class="fa fa-user"></i> BENEFICIARIO</div>
+        <div class="panel-body">
+          <div class="col-lg-4">
+            <div class="form-group">
+              <input class="form-control" type="text" name="beneficiario_cedula" class="form-control" placeholder="CÉDULA DEL BENEFICIARIO" value="<?php echo $beneficiario->cedula ?>" required>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="form-group">
+              <input class="form-control" type="text" name="beneficiario_nombre_apellido" class="form-control" placeholder="NOMBRE Y APELLIDO DEL BENEFICIARIO" value="<?php echo $beneficiario->nombre_apellido ?>" required>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="form-group">
+              <input class="form-control" type="text" name="beneficiario_fecha_nacimiento" class="form-control" placeholder="FECHA NACIMIENTO DE BENEFICIARIO" value="<?php echo $beneficiario->fecha_nacimiento ?>" required>
+            </div>
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="form-group">
-          <input class="form-control" type="text" name="beneficiario_nombre_apellido" class="form-control" placeholder="NOMBRE Y APELLIDO DEL BENEFICIARIO" value="<?php echo $beneficiario->nombre_apellido ?>" required>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="form-group">
-          <input class="form-control" type="text" name="beneficiario_fecha_nacimiento" class="form-control" placeholder="FECHA NACIMIENTO DE BENEFICIARIO" value="<?php echo $beneficiario->fecha_nacimiento ?>" required>
-          </div>
-        </div>
+      </div>
       <?php else: ?>
       
       <?php endif ?>
