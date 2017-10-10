@@ -265,7 +265,8 @@ class Solicitudes
             Error('consultas/aprobadas','Error.');
         }
     }
-
+ 
+ 
     public function store()
     {
         //Arr($_POST);
