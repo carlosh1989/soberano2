@@ -40,28 +40,28 @@ text-align: center;
 <div class="slider" style="margin-top: -6px;">
     <ul class="slides z-depth-3">
         <li>
-            <img src="https://process.filestackapi.com/AhTgLagciQByzXpFGRI0Az/quality=value:80/compress/http://www.grupoice.com/wps/wcm/connect/6cd0a6cc-e3d0-4bec-9765-8908615f62d2/chatBanner.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-6cd0a6cc-e3d0-4bec-9765-8908615f62d2-lVjDIuO"> <!-- random image -->
+            <img src="http://res.cloudinary.com/tuconsultaenlinea/image/upload/v1507686916/j6pwqqova4eflktndmjy.jpg"> <!-- random image -->
             <div class="caption left-align">
                 <h3 style="text-shadow: 0px 0px 1px #fff;" class="red-text">Ayuda social!</h3>
                 <h5 class="light grey-text text-lighten-3">lorem ipsum.</h5>
             </div>
         </li>
         <li>
-            <img src="https://process.filestackapi.com/AhTgLagciQByzXpFGRI0Az/quality=value:80/compress/http://konsud.com/files/sliders/1497383737_aj-pitu-v1.jpg"> <!-- random image -->
+            <img src="http://res.cloudinary.com/tuconsultaenlinea/image/upload/v1507687152/bjxus3g7loqkncqfr8so.jpg"> <!-- random image -->
             <div class="caption left-align">
                 <h3 style="text-shadow: 0px 0px 1px #fff;"  class="red-text">Ayuda social!</h3>
                 <h5 class="light grey-text text-lighten-3">lorem ipsum.</h5>
             </div>
         </li>
         <li>
-            <img src="https://process.filestackapi.com/AhTgLagciQByzXpFGRI0Az/quality=value:80/compress/https://www.aid-credit.com/wp-content/uploads/sin-justificaciones.jpg"> <!-- random image -->
+            <img src="http://res.cloudinary.com/tuconsultaenlinea/image/upload/v1507687259/ebre2dvlarvjmbkcx9uh.jpg"> <!-- random image -->
             <div class="caption center-align">
                 <h3 style="text-shadow: 0px 0px 1px #fff;"  class="red-text">Ayuda social!</h3>
                 <h5 class="light grey-text text-lighten-3">lorem ipsum.</h5>
             </div>
         </li>
         <li>
-            <img src="https://process.filestackapi.com/AhTgLagciQByzXpFGRI0Az/quality=value:80/compress/http://www.grupo-sm.com/sites/default/files/styles/section_header/public/header/images/premios.jpg?itok=wypo9vrT"> <!-- random image -->
+            <img src="http://res.cloudinary.com/tuconsultaenlinea/image/upload/v1507687346/yxux8yu4m7r2cxuadhor.jpg"> <!-- random image -->
             <div class="caption center-align">
                 <h3 style="text-shadow: 0px 0px 1px #fff;"  class="red-text">Ayuda social!</h3>
                 <h5 class="light grey-text text-lighten-3">lorem ipsum.</h5>

@@ -48,5 +48,10 @@ class Solicitud extends Model {
 	{
 		return $this->hasOne(Entrega::class, 'solicitud_id', 'id');
 	}
+
+	public function beneficiario()
+	{
+		return $this->hasOne(Beneficiario::class, 'solicitud_id', 'id');
+	}
 }
 

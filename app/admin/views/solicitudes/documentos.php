@@ -33,6 +33,12 @@ display: none;
       <input type="hidden" name="observacion_solicitud" value="<?php echo $observacion_solicitud ?>">
       <input type="hidden" name="monto_solicitado" value="<?php echo $monto_solicitado ?>">
       <input type="hidden" name="organismo_id" value="<?php echo $organismo_id ?>">
+
+      <!-- DATOS DE BENEFICIARIO -->
+      <input type="hidden" name="beneficiario_cedula" value="<?php echo $beneficiario_cedula ?>">
+      <input type="hidden" name="beneficiario_nombre_apellido" value="<?php echo $beneficiario_nombre_apellido ?>">
+      <input type="hidden" name="beneficiario_fecha_nacimiento" value="<?php echo $beneficiario_fecha_nacimiento ?>">
+
       <div class="row">
         <div class="col-lg-12">
           <?php if (isset($requerimientos[0])): ?>

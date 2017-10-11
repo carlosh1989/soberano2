@@ -1,6 +1,7 @@
 <?php
 namespace App\admin\controllers;
 
+use App\Beneficiario;
 use App\Carga;
 use App\Categoria;
 use App\DetalleSolicitud;
@@ -141,6 +142,20 @@ class Solicitudes
         $data['requerimiento_categoria_id'] = $requerimiento_categoria_id;
         $data['observacion_solicitud'] = $observacion_solicitud;
         $data['monto_solicitado'] = $monto_solicitado;
+
+        if(isset($beneficiario_cedula) and $beneficiario_cedula)
+        {
+            $data['beneficiario_cedula'] = $beneficiario_cedula;
+            $data['beneficiario_nombre_apellido'] = $beneficiario_nombre_apellido;
+            $data['beneficiario_fecha_nacimiento'] = $beneficiario_fecha_nacimiento;
+        }
+        else
+        {
+            $data['beneficiario_cedula'] = "";
+            $data['beneficiario_nombre_apellido'] = "";
+            $data['beneficiario_fecha_nacimiento'] = "";
+        }
+
         $data['requerimientos'] = Requerimientos::where('tipo_solicitud_id',$tipo_solicitud_id)->get();
         //Arr($requerimientos);
         View($data);
@@ -243,14 +258,36 @@ class Solicitudes
 
         if($entrega->save() and $solicitud->save())
         {
-            $imagen = new EntregaImagen;
+            if($portada ==  1 AND $imagenEntrega)
+            {
+                \Cloudinary::config(array( 
+                "cloud_name" => "tuconsultaenlinea", 
+                "api_key" => "969938491626729", 
+                "api_secret" => "J2mGOPnz9A1dl9kubb7Qyh9h_MI" 
+                ));
+
+                $url = $imagenEntrega.'';
+                $imagen_original = \Cloudinary\Uploader::upload('https://process.filestackapi.com/AhTgLagciQByzXpFGRI0Az/compress/'.$imagenEntrega);
+                $imagen_grande = \Cloudinary\Uploader::upload('https://process.filestackapi.com/AhTgLagciQByzXpFGRI0Az/resize=w:800/quality=value:85/compress/'.$imagenEntrega);
+                $imagen_medio = \Cloudinary\Uploader::upload('https://process.filestackapi.com/AhTgLagciQByzXpFGRI0Az/resize=w:400/quality=value:70/compress/'.$imagenEntrega);
+                $imagen_miniatura = \Cloudinary\Uploader::upload('https://process.filestackapi.com/AhTgLagciQByzXpFGRI0Az/resize=w:250/quality=value:70/compress/'.$imagenEntrega);
+
+                $imagen = new EntregaImagen;
+                $imagen->solicitudes_entregas_id = $entrega->id;
+                $imagen->imagen_original = $imagen_original['url'];
+                $imagen->imagen_grande = $imagen_grande['url'];
+                $imagen->imagen_medio = $imagen_medio['url'];
+                $imagen->imagen_miniatura = $imagen_miniatura['url'];
+            }
+
+/*            $imagen = new EntregaImagen;
             $imagen->solicitudes_entregas_id = $entrega->id;
             $imagen->imagen_original = 'https://process.filestackapi.com/AhTgLagciQByzXpFGRI0Az/resize=w:1000/quality=value:70/compress/'.$imagenEntrega;
             $imagen->imagen_grande = 'https://process.filestackapi.com/AhTgLagciQByzXpFGRI0Az/resize=w:800/quality=value:70/compress/'.$imagenEntrega;
             $imagen->imagen_medio = 'https://process.filestackapi.com/AhTgLagciQByzXpFGRI0Az/resize=w:400/quality=value:70/compress/'.$imagenEntrega;
             $imagen->imagen_miniatura = 'https://process.filestackapi.com/AhTgLagciQByzXpFGRI0Az/resize=w:250/quality=value:70/compress/'.$imagenEntrega;
             //return $laboratorio->id;
-
+*/
             if($imagen->save())
             {
                 Success('solicitudes/'.$solicitud->id,'Solicitud fue entregada.');
@@ -288,6 +325,17 @@ class Solicitudes
         $solicitud->fecha_hora_asignado_consignado = Carbon::now();
         $solicitud->estatus = 1;
         $solicitud->save();
+
+        //AGREGANDO BENEFICIARIO DE TENERLO
+        if(isset($beneficiario_cedula) and $beneficiario_cedula and $solicitud->id)
+        {
+            $beneficiario = new Beneficiario;
+            $beneficiario->solicitud_id = $solicitud->id;
+            $beneficiario->cedula = $beneficiario_cedula;
+            $beneficiario->nombre_apellido = $beneficiario_nombre_apellido;
+            $beneficiario->fecha_nacimiento = $beneficiario_fecha_nacimiento;
+            $beneficiario->save();
+        }
 
         $cod = $solicitud->id.''.date('Y');
         $solicitud->cod = $cod;
