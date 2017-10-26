@@ -54,65 +54,89 @@
       <div class="col-lg-6 animated fadeIn panel panel-default animated">
         <div class="">
           <h5 class="text-muted text-primary">
-          <i class="fa fa-file"></i> SOLICITUDES 
+          <i class="fa fa-file"></i> SOLICITUDES
           <a class="btn btn-default pull-right" href="<?php echo baseUrl ?>admin/solicitudes/create/<?php echo $solicitante->id ?>"><i class="fa fa-files-o text-primary"></i> Agregar Solicitud</a>
           </h5>
           <hr>
         </div>
         <div class="">
-        <table class="table table-striped table-condensed table-responsive animated fadeIn" data-striped="true">
-          <thead>
-            <tr class="bg-primary text-white">
-              <th class="text-uppercase" width="5%" class="text-uppercase">COD</th>
-              <th class="text-uppercase" width="35%" class="text-uppercase">Fecha</th>
-              <th class="text-uppercase" class="text-uppercase">Paso Actual</th>
-              <th class="text-uppercase" width="10%" class="text-uppercase">Ver</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php if ($solicitante->solicitudes): ?>
-            <?php foreach (Paginator($solicitante->solicitudes,4) as $c): ?>
-            <tr>
-              <td>
-                <button class="btn btn-default"><?php echo $c->cod ?></button>
-              </td>
-              <td class="text-uppercase">
-              <?php  
-              list($date,$hora) = explode(' ',$c->fecha_hora_asignado_consignado);
-              list($ano,$mes,$dia) = explode('-',$date);
-              $fecha = $dia.'/'.$mes.'/'.$ano;
-              ?>
-                <?php echo $fecha ?>
-              </td>
-              <td class="text-uppercase" class="text-uppercase">
-                
-                <?php if ($c->pasos->paso == 1): ?>
-                <button class="btn btn-info btn-default">Registrado</button>
-                <?php endif ?>
-                <?php if ($c->pasos->paso == 2): ?>
-                <button class="btn btn-default"><i class="fa fa-clipboard" aria-hidden="true"></i>
-                Asignado y Consignado</button>
-                <?php endif ?>
-                <?php if ($c->pasos->paso == 3): ?>
-                <button class="btn btn-default">Asignado</button>
-                <?php endif ?>
-                <?php if ($c->pasos->paso == 4): ?>
-                <button class="btn btn-default">Procesado</button>
-                <?php endif ?>
-              </td>
-              <td class="text-uppercase" class="text-uppercase" width="15%">
-                <a class="btn btn-default" href="<?php echo baseUrl ?>admin/solicitudes/<?php echo $c->id ?>"><i class="fa fa-search text-primary"></i></a>
-              </td>
-            </tr>
-            <?php endforeach ?>
-            <?php else: ?>
-            <h5>No tiene solicitudes.</h5>
-            <?php endif ?>
-          </tbody>
-        </table>
-        <div class="text-center">
-          <?php echo Paginator($solicitante->solicitudes,4) ?>
-        </div>
+          <table class="table table-striped table-condensed table-responsive animated fadeIn" data-striped="true">
+            <thead>
+              <tr class="bg-primary text-white">
+                <th class="text-uppercase" width="5%" class="text-uppercase">COD</th>
+                <th class="text-uppercase" width="35%" class="text-uppercase">Fecha</th>
+                <th class="text-uppercase" class="text-uppercase">Paso Actual</th>
+                <th class="text-uppercase" width="10%" class="text-uppercase">Estatus</th>
+                <th class="text-uppercase" width="10%" class="text-uppercase">Ver</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php if ($solicitante->solicitudes): ?>
+              <?php foreach (Paginator($solicitante->solicitudes,4) as $c): ?>
+              <tr>
+                <td>
+                  <button class="btn btn-default"><?php echo $c->cod ?></button>
+                </td>
+                <td class="text-uppercase">
+                  <?php
+                  list($date,$hora) = explode(' ',$c->fecha_hora_asignado_consignado);
+                  list($ano,$mes,$dia) = explode('-',$date);
+                  $fecha = $dia.'/'.$mes.'/'.$ano;
+                  ?>
+                  <?php echo $fecha ?>
+                </td>
+                <td class="text-uppercase" class="text-uppercase">
+                  
+                  <?php if ($c->pasos->paso == 1): ?>
+                  <button class="btn btn-info btn-default">Registrado</button>
+                  <?php endif ?>
+                  <?php if ($c->pasos->paso == 2): ?>
+                  <button class="btn btn-default"><i class="fa fa-clipboard" aria-hidden="true"></i>
+                  Asignado y Consignado</button>
+                  <?php endif ?>
+                  <?php if ($c->pasos->paso == 3): ?>
+                  <button class="btn btn-default">Asignado</button>
+                  <?php endif ?>
+                  <?php if ($c->pasos->paso == 4): ?>
+                  <button class="btn btn-default">Procesado</button>
+                  <?php endif ?>
+                </td>
+                <td>
+                  <?php if ($c->estatus == 1): ?>
+                  <button onclick="cerrar()" type="submit" class="btn btn-primary">
+                  <i class="fa fa-search"></i> En estudio
+                  </button>
+                  <?php endif ?>
+                  <?php if ($c->estatus == 2): ?>
+                  <a class="btn btn-success" href="#"><i class="fa fa-check-square"></i></a>
+                  <?php endif ?>
+                  <?php if ($c->estatus == 3): ?>
+                  <a class="btn btn-danger" href="#"><i class="fa fa-window-close"></i></a>
+                  <?php endif ?>
+                  <?php if ($c->estatus == 4): ?>
+                  <a class="btn btn-success" href="#"><i class="fa fa-share-square"></i></a>
+                  <?php endif ?>
+                </td>
+                <td class="text-uppercase" class="text-uppercase" width="15%">
+                  <a class="btn btn-default" href="<?php echo baseUrl ?>admin/solicitudes/<?php echo $c->id ?>"><i class="fa fa-search text-primary"></i></a>
+                </td>
+              </tr>
+              <?php endforeach ?>
+              <?php else: ?>
+              <h5>No tiene solicitudes.</h5>
+              <?php endif ?>
+            </tbody>
+          </table>
+          <div class="text-center">
+            <?php echo Paginator($solicitante->solicitudes,4) ?>
+          </div>
+          <div class="col-lg-12 text-center">
+            <a class="btn btn-primary" href="#"><i class="fa fa-search"></i> EN ESTUDIO</a>
+            <a class="btn btn-success" href="#"><i class="fa fa-check-square"></i> APROBADO</a>
+            <a class="btn btn-danger" href="#"><i class="fa fa-window-close"></i> RECHAZADO</a>
+            <a class="btn btn-success" href="#"><i class="fa fa-share-square"></i> ENTREGADO</a>
+            <br><br>
+          </div>
         </div>
       </div>
     </div>

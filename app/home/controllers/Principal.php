@@ -27,7 +27,7 @@ class Principal extends Controller
         }
         else
         {
-            $entregas = Entrega::where('portada',1)->get();
+            $entregas = Entrega::orderBy('id', 'DESC')->where('portada',1)->get();
             //Arr($entregas);
             //View::ver('home/principal/index',compact('entregas')); 
             View(compact('entregas')); 
@@ -38,7 +38,7 @@ class Principal extends Controller
     {
         extract($_POST);
 
-        if(isset($cedula) and $cedula and isset($cod) and $cod)
+        if(isset($cedula) and $cedula)
         {
             $solicitante = Solicitante::where('cedula',$cedula)->first();
 
@@ -48,7 +48,8 @@ class Principal extends Controller
             } 
             else 
             {
-                $solicitud = Solicitud::where('cod',$cod)->first();  
+
+                $solicitud = Solicitud::where('solicitante_id',$solicitante->id)->first();  
 
                 if(!$solicitud)
                 {

@@ -27,7 +27,8 @@
         "beelab/bowerphp": "^0.5.2",
         "windwalker/edge": "^3.2",
         "dompdf/dompdf":"*",
-        "google/recaptcha": "~1.1"
+        "google/recaptcha": "~1.1",
+        "cloudinary/cloudinary_php": "dev-master"
     },
     "autoload": {
         "psr-4": {

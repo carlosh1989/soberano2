@@ -42,9 +42,7 @@ class Login
     public function verificar()
     {
     	
-		$recaptcha = new \ReCaptcha\ReCaptcha('6Lf0ETMUAAAAAB6BNOrkmuZfQpXNQgjpySrmJl3Z');
-    	$resp = $recaptcha->verify($_POST['g-recaptcha-response'], $_SERVER['REMOTE_ADDR']);
-		if ($resp->isSuccess()) {
+
 				extract($_POST);
 				$usuario = Usuario::where('email',$username)->first();
 				if($usuario)
@@ -78,11 +76,6 @@ class Login
 		            Redirect::send('auth/login','error','Usuario incorrecto.');
 				}
 				//Arr::show($usuario);
-		} 
-		else 
-		{
-		    Redirect::send('auth/login','error','CAPTCHA requerido.');
-		}
     }
 
     public function clave()
