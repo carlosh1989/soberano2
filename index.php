@@ -204,9 +204,17 @@ if(baseUrl)
 		if($method == 'POST')
 		{
 			if (!Token::check('post')) {
-			    ob_start();
-			    include('resources/systemMessages/TokenInvalid.php');
-			    echo ob_get_clean();
+
+				if (isset($_SERVER['ENV_ENVIRONMENT']) AND $_SERVER['ENV_ENVIRONMENT'] == 'pro') {
+					header('Location: '.$baseUrl.'');
+				}
+				else
+				{
+				    ob_start();
+				    include('resources/systemMessages/TokenInvalid.php');
+				    echo ob_get_clean();
+				}
+
 			}
 			else
 			{

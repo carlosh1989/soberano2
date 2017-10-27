@@ -2,7 +2,7 @@
 <div class="row">
   <br>
   <form action="<?php echo baseUrl ?>auth/login/verificar" method="POST" >
-    <?php echo Token::field() ?>
+    <?php echo Token(); ?>
     <div class="col s12 m4 offset-m4 card-panel z-depth-2">
       <div class="center-align">
       <br>

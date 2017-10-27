@@ -100,3 +100,8 @@ function variable_name( &$var, $scope=false, $prefix='UNIQUE', $suffix='VARIABLE
     $var = $old;
     return $vname;
 }
+
+function Token()
+{
+    echo \System\tools\security\Token::field();
+}
