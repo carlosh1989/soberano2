@@ -1,16 +1,18 @@
 <?php
-namespace App\${modulo}\controllers;
+namespace App\admin\controllers;
+use App\Usuario;
 
-class ${controller}
+class Cuentas
 {
     function __construct()
     {
-        Role('${modulo}');
+        Role('admin');
     }
 
     public function index()
     {
-        View();
+        $usuarios = Usuario::all();
+        View(compact('usuarios'));
     }
 
     public function create()

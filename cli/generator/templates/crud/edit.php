@@ -1,22 +1,20 @@
-<div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title">EDIT</h3>
-
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-              <i class="fa fa-minus"></i></button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-              <i class="fa fa-times"></i></button>
-          </div>
-        </div>
-        <div class="box-body">
-          Vista <b>edit</b> del mudulo <b>${modulo}</b>
-          <hr>
-          ID: <b><?php echo $id ?></b>
-        </div>
-        <!-- /.box-body -->
-        <div class="box-footer">
-          Footer
-        </div>
-        <!-- /.box-footer-->
+<div id="panel" class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title text-muted"><i class="fa fa-pencil-square fa-2x"></i> EDICION DEL MODULO ${modulo}<b></b>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-lg-12">
+        <form action="<?php echo baseUrl ?>${modulo}/${controller}/<?php echo $id ?>" method="POST">
+          <?php echo Token::field() ?>
+          <input class="form-control" type="text" name="nombre" placeholder="NOMBRE">
+          <br>
+          <input class="form-control" type="text" name="apellido" placeholder="APELLIDO">
+          <br>
+          <button class="btn btn-primary" type="submit">ACTUALIZAR</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

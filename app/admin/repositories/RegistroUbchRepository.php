@@ -1,9 +1,9 @@
 <?php
-namespace App\recepcionista\repositories;
+namespace App\admin\repositories;
 
 use Eloquent;
 
-class AtencionRepository 
+class RegistroUbchRepository 
 {
     function __construct()
     {

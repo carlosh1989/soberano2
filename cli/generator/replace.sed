@@ -1,4 +1,4 @@
 
-s/${modulo}/recepcionista/
-s/${controller}/Atencion/
+s/${modulo}/admin/
+s/${controller}/RegistroUbch/
 s/${vista}/show/

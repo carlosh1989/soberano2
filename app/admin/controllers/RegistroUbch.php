@@ -1,11 +1,11 @@
 <?php
-namespace App\${modulo}\controllers;
+namespace App\admin\controllers;
 
-class ${controller}
+class RegistroUbch
 {
     function __construct()
     {
-        Role('${modulo}');
+        Role('admin');
     }
 
     public function index()

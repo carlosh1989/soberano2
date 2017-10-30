@@ -6,7 +6,7 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-lg-12">
-        <form action="<?php echo baseUrl ?>admin/Cuentas" method="POST">
+        <form action="<?php echo baseUrl ?>admin/RegistroUbch" method="POST">
           <?php echo Token::field() ?>
           <input class="form-control" type="text" name="nombre" placeholder="NOMBRE">
           <br>

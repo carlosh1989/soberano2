@@ -6,12 +6,29 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-lg-12">
-        <?php foreach ($usuarios as $key => $u): ?>
-        <b>nombre:</b> <?php echo $u->name ?>
-        <form action="<?php echo baseUrl ?>recepcionista/atencion/<?php echo $u->id ?>/delete" method="POST">
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque velit illum fugiat porro iste, accusamus saepe sunt placeat, error alias soluta mollitia debitis aliquid laudantium temporibus repellat atque beatae modi.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="panel" class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title text-muted"><i class="fa fa-user fa-2x"></i> VISTA DEL MODULO ${modulo}<b></b>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-lg-12">
+        <form action="<?php echo baseUrl ?>${modulo}/${controller}" method="POST">
           <?php echo Token::field() ?>
-          <button class="btn btn-primary" type="submit">BORRAR</button>
-        </form>        <?php endforeach ?>
+          <input class="form-control" type="text" name="nombre" placeholder="NOMBRE">
+          <br>
+          <input class="form-control" type="text" name="apellido" placeholder="APELLIDO">
+          <br>
+          <button class="btn btn-primary" type="submit">ENVIAR</button>
+        </form>
       </div>
     </div>
   </div>

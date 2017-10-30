@@ -1,42 +1,35 @@
-<div class="panel panel-default">
+<div id="panel" class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title">Cuentas de banco de sangre</h3>
+    <h3 class="panel-title text-muted"><i class="fa fa-file fa-2x"></i> INDEX DEL MODULO admin<b></b>
+    <a class="btn btn-default pull-right" href="<?php echo baseUrl ?>admin/cuentas/create"><i class="fa fa-plus-square text-primary"></i><i style="color:#777;"> Agregar Usuario</i></a>    </h3>
   </div>
   <div class="panel-body">
-    <a class="btn btn-success" href="<?php echo baseUrl ?>admin/cuentas/create">  <i class="fa fa-plus"></i> Agregar Cuenta Nueva</a>
-    <br><br>
-    <table class="table table-striped table-condensed table-responsive" data-striped="true">
-      <thead>
-        <tr>
-          <th>id</th>
-          <th>Nombre</th>
-          <th>Email</th>
-          <th>Role</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php foreach ($cuentas_banco_sangre as $c): ?>
-        <tr>
-          <td><?php echo $c->id ?></td>
-          <td><?php echo $c->name ?></td>
-          <td><?php echo $c->email ?></td>
-          <td><?php echo $c->role ?></td>
-          <td width="15%">
-            <!-- Single button -->
-            <div class="btn-group">
-              <button type="button" class="btn btn-default dropdown-toggle fa fa-cog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu">
-                <li><a href="<?php echo $baseUrl ?>admin/cuentas/<?php echo $c->id ?>"> <pre class="text-primary">VER DATOS <i class="fa fa-search"></i></pre></a></li>
-                <li> <a href="<?php echo $baseUrl ?>admin/cuentas/<?php echo $c->id ?>/edit"> <pre class="text-success">EDITAR <i class="fa fa-pencil"></i></pre></a></li></a></li>
-                <li><a href="<?php echo $baseUrl ?>admin/cuentas/<?php echo $c->id ?>/delete"><pre class="text-danger">ELIMINAR <i class="fa fa-times"></i></pre></a></li>
-              </ul>
-            </div>
-          </td>
-        </tr>
-        <?php endforeach ?>
-      </tbody>
-    </table>
+    <div class="col-md-12 table-responsive">
+      <table class="table table-striped table-condensed animated fadeIn" data-striped="true">
+        <thead>
+          <tr class="bg-primary text-white">
+            <th width="" class="text-uppercase">Nombre</th>
+            <th width="" class="text-uppercase">Role</th>
+            <th width="" class="text-uppercase">Organismo</th>
+            <th width="" class="text-uppercase">Creado</th>
+            <th width="" class="text-uppercase">Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php foreach ($usuarios as $key => $u): ?>
+          <tr>
+            <td><?php echo $u->name ?></td>
+            <td><?php echo $u->role ?></td>
+            <td><?php echo $u->organismo->tipo ?></td>
+            <td><?php echo $u->created_at ?></td>
+          </tr>
+          <?php endforeach ?>
+        </tbody>
+      </table>
+      <div class="text-center">
+        <?php echo Paginator($usuarios); ?>
+      </div>
+    </div>
   </div>
+</div>
 </div>
