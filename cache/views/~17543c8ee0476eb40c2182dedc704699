@@ -1,0 +1,12 @@
+<?php $this->startSection('title', 'Page Title'); ?>
+
+<?php $this->startSection('sidebar'); ?>
+    @parent
+
+    <p>This is appended to the master sidebar.</p>
+<?php $this->stopSection(); ?>
+
+<?php $this->startSection('content'); ?>
+    <p>This is my body content.</p>
+<?php $this->stopSection(); ?>
+<?php echo $this->render('theme.solicitantes', $this->arrayExcept(get_defined_vars(), array('__data', '__path'))); ?>

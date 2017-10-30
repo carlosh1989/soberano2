@@ -180,4 +180,9 @@ class Solicitantes
     {
 
     }
+
+    public function blade()
+    {
+        blade();
+    }
 }

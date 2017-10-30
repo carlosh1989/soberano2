@@ -36,10 +36,13 @@ function Role($role)
 
 function View($data=Null)
 {
-    //motor de plantilla BLADE
-    //\System\template\View::bladeView($data);
-    //PHP TEXT PLAIN
+
 	\System\template\View::view($data);
+}
+
+function blade($data=Null)
+{
+    \System\template\View::bladeAutomatic($data);
 }
 
 function Paginator($data,$num=20)

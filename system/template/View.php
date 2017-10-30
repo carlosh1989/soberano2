@@ -121,4 +121,16 @@ class View
         $view->content = $view->render('app/'.$modulo.'/views/'.$controlador.'/'.$vista.'.php');
         echo $view->render('app/'.$modulo.'/views/theme/'.$modulo.'.php'); 
     }
+
+    public static function bladeAutomatic($array1=Null)
+    {
+        $modulo = URI_MODULO;  
+        $controlador = URI_CONTROLADOR;  
+        $vista = debug_backtrace()[1]['function'];
+
+        $array2 = array('baseUrl' => baseUrl);
+        $data = ($array1) ? $data = array_unique( array_merge( $array1 , $array2 )) : $data = $array2;
+        $blade = new Edge(new EdgeFileLoader(array('app/'.$modulo.'/views')), null, new EdgeFileCache('cache/views'));
+        echo $blade->render($controlador.'._'.$vista,$data);
+    }
 }

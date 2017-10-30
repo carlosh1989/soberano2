@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>App Name - <?php echo $this->yieldContent('title'); ?></title>
+    </head>
+    <body>
+        <?php $this->startSection('sidebar'); ?>
+            This is the master sidebar.
+        <?php echo $this->yieldSection(); ?>
+
+        <div class="container">
+            <?php echo $this->yieldContent('content'); ?>
+        </div>
+    </body>
+</html>
