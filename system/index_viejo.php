@@ -138,9 +138,19 @@ if(baseUrl)
 			  			}
 			  			else
 			  			{
-				  			$id = $metodo;
-				  			$params = array($id);
-				  			$metodo = 'show';
+							if ($parametro and $parametro == 'delete') {
+					  			$id = $metodo;
+					  			$params = array($id);
+					  			$metodo = 'destroy';
+							}	
+							else
+							{
+					  			$id = $metodo;
+					  			$params = array($id);
+					  			$metodo = 'show';
+							}
+
+
 			  			}
 			  		} 
 			  		else 
