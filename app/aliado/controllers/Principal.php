@@ -1,11 +1,11 @@
 <?php
-namespace App\operador\controllers;
+namespace App\aliado\controllers;
 
 class Principal
 {
     function __construct()
     {
-        Role('operador');
+        Role('aliado');
     }
 
     public function index()

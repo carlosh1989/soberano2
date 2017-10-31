@@ -89,6 +89,7 @@
                       ?>
                       </a>
                       <ul class="nav collapse" id="opcionesMenu" role="menu" aria-labelledby="btn-1">
+                        <li><a href="<?php echo baseUrl ?>admin/cuentas"><i class="fa fa-user-plus"></i> Cuentas</a></li>
                         <li><a href="<?php echo baseUrl ?>auth/login/logout"><i class="fa fa-power-off"></i> Salir</a></li>
                       </ul>
                     </li>

@@ -8,6 +8,7 @@
       <table class="table table-striped table-condensed animated fadeIn" data-striped="true">
         <thead>
           <tr class="bg-primary text-white">
+            <th>ID</th>
             <th width="" class="text-uppercase">Nombre</th>
             <th width="" class="text-uppercase">Role</th>
             <th width="" class="text-uppercase">Organismo</th>
@@ -18,10 +19,14 @@
         <tbody>
           <?php foreach ($usuarios as $key => $u): ?>
           <tr>
-            <td><?php echo $u->name ?></td>
-            <td><?php echo $u->role ?></td>
-            <td><?php echo $u->organismo->tipo ?></td>
-            <td><?php echo $u->created_at ?></td>
+            <td class="text-uppercase"><?php echo $u->id ?></td>
+            <td class="text-uppercase"><?php echo $u->name ?></td>
+            <td class="text-uppercase"><?php echo $u->role ?></td>
+            <td class="text-uppercase"><?php echo $u->organismo->tipo ?></td>
+            <td class="text-uppercase"><?php echo $u->created_at ?></td>
+            <td class="text-uppercase">
+              <a href="" class="btn btn-danger fa fa-times"></a>
+            </td>
           </tr>
           <?php endforeach ?>
         </tbody>

@@ -1,5 +1,5 @@
 <?php
-namespace App\operador\repositories;
+namespace App\aliado\repositories;
 
 use Eloquent;
 

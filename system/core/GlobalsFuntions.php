@@ -108,3 +108,8 @@ function Token()
 {
     echo \System\tools\security\Token::field();
 }
+
+function Capture()
+{
+    echo extract($_POST);
+}
