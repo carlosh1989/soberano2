@@ -25,7 +25,10 @@
             <td class="text-uppercase"><?php echo $u->organismo->tipo ?></td>
             <td class="text-uppercase"><?php echo $u->created_at ?></td>
             <td class="text-uppercase">
-              <a href="" class="btn btn-danger fa fa-times"></a>
+              <form action="<?php echo baseUrl ?>admin/cuentas/<?php echo $u->id ?>/delete" method="POST">
+                <?php echo Token() ?>
+                <button type="submit" class="btn btn-danger fa fa-times"></button>
+              </form>
             </td>
           </tr>
           <?php endforeach ?>

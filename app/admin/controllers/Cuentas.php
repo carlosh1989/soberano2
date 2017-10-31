@@ -67,6 +67,15 @@ class Cuentas
 
     public function destroy($id)
     {
+        $usuario = Usuario::find($id);
 
+        if($usuario->delete())
+        {
+            Success('cuentas','Cuenta borrada con exito.');
+        }
+        else
+        {
+            Error('cuentas/create','Error al borrar cuenta.');
+        }
     }
 }
